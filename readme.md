@@ -1,7 +1,6 @@
 ## Chord Finder
 
-Rough Outline Output chord name output from virtual piano keys. With a focus on ui ux display across multiple devices. 
-Specifically mobile 
+Rough Outline Output chord name output from virtual piano keys. With a focus on ui ux display across multiple devices,Specifically mobile 
 
 ### V1
 -  Use intervals to determin chords
@@ -10,7 +9,7 @@ Specifically mobile
 - [x] getinterval
 - [x] getNote
 - [x] getChord
-- [ ] Setup repo
+- [x] Setup repo
   
 -  uses an object two: [5,5] output C fifth in case to define chord type (major, minor, augmented, diminished, 7th, Triad, 9th, sus) 
   
@@ -18,13 +17,41 @@ Specifically mobile
 
 ---
 ### V2
-Requirements:
-   - 8 Note keyboard input
-   - Animate: Press / Hold / Release
-     - Max 5 keys
-   - Return of chord name
+- Features:
+   - Piano GUI:
+     - [x] Do active notes
+     - [x] markup css
+     - [X] 12 Note input
+     - classNames  helper 
+       - [x] Black note
+       - [x] White note
+       - [x] friendly note name in class not C#
+
+   - Piano Component Controls: 
+     - Note click handler
+       - [x] key down long press state (useEffect ?)
+       - [x] key up
+       - [] Max Keys
+
+   - ChordName Components
+     - [ ] Test and config for all chord types
+
+   - Context:
+     - [x] Add note to noteInput
+     - [x] Remove note from noteInput
+
+   - Reproduce audio:
+
+- Fixes
+     - [x] Simplify array handling from constants
+     - [ ] Fix design layout to something 
+     - [ ] Fix piano padding layout
+     - [x] Decide on Component Structure & naming
+     - [x] Install Bootstrap
+     - [x] Install classnames
 
 Component Tree:
+```
     App.js
      -> Instrument
         -> Piano
@@ -32,13 +59,12 @@ Component Tree:
                 onClick handlers
                 state setNotes
                 -> Key 
+```
 
-Chord/Interval context reducer
-    switch(notnums)
+Analysis:
 
-Context + Reducer
-    case switch notes
-
+- Where to handle chord name ? In context ? or directly in component itself
+ 
 ---
 
 ### V3
@@ -49,24 +75,14 @@ Requirements:
    - Key Select
    - refactor to vite or next app
    - reproduce a chord progression visualy
+   - Change active color
+
 
 -  [] Test cases
 -  [] Docs / Diagram
 
 --- 
 
-### Todos:
-Components
-    - Keys
-    - Key
-    - Piano
-- interval-context 
-- licencing
-- file folder structure
-- ui elements
-- cart reducer logic
-
----
 
 ### General Notes
 
@@ -90,6 +106,8 @@ Components
     The 18 chord formulas: major, sus2, sus4, 5, maj7, maj6, minor, augmented, diminished, minor7, minor7♭5, dim7, dom7, minor7#5, maj7#5, maj7♭5, dom7#5, dom7♭5.
 
     351 possible chord variations
+the sharp (♯), the flat (♭) and the natural (♮).
 
 #### Programmer Notes
 -  [Enums !] https://www.sohamkamani.com/javascript/enums/?utm_content=cmp-true)
+-  https://codepen.io/zastrow/pen/kxdYdk - Philip Zastrow @zastrow
