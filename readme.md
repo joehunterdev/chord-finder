@@ -40,7 +40,14 @@ Rough Outline Output chord name output from virtual piano keys. With a focus on 
      - [x] Add note to noteInput
      - [x] Remove note from noteInput
 
+   - Music Theroy HOC: 
+     - Chord 
+       - [x] Look for alts to derive note id the "flat" Eb prblem. 
+       - [ ] Set
+
+
    - Reproduce audio:
+     - [] Inve
 
 - Fixes
      - [x] Simplify array handling from constants
@@ -49,6 +56,7 @@ Rough Outline Output chord name output from virtual piano keys. With a focus on 
      - [x] Decide on Component Structure & naming
      - [x] Install Bootstrap
      - [x] Install classnames
+     - [ ] Handling repo files for deployment directly from clone
 
 Component Tree:
 ```
