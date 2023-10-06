@@ -1,7 +1,7 @@
 
 import React from 'react';
 import styles from './PianoKeys.module.css';
-import { notes } from '../../store/constants';
+import { notes } from '../Constants/constants';
 
 import PianoKey from './PianoKey';
 

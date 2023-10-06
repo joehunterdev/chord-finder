@@ -18,6 +18,7 @@ const PianoKey = ({ id, name, alt }) => {
     //  }
 
 
+
     const generateClassName = () => {
         //strings
         // let noteName =  name.replace('#',"-sharp").replace('b',"-flat").toLowerCase()

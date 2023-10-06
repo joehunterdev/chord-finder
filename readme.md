@@ -16,7 +16,15 @@ Rough Outline Output chord name output from virtual piano keys. With a focus on 
 -  'Object.freeze' after its first use to ensure its immutable in your init scenario.
 
 ---
+
 ### V2
+
+- []  Migrate to React Vite
+  - [] Investigate react-app to vite
+- [] Setup proper Tests for chord names
+- []  Recursive getChord 
+- [] Fix redundant code in css ` .black:active { `
+
 - Features:
    - Piano GUI:
      - [x] Do active notes
@@ -32,6 +40,8 @@ Rough Outline Output chord name output from virtual piano keys. With a focus on 
        - [x] key down long press state (useEffect ?)
        - [x] key up
        - [] Max Keys
+       - [] Key layout 
+       - [] Fix key press logic on and off
 
    - ChordName Components
      - [ ] Test and config for all chord types
@@ -39,12 +49,12 @@ Rough Outline Output chord name output from virtual piano keys. With a focus on 
    - Context:
      - [x] Add note to noteInput
      - [x] Remove note from noteInput
-
    - Music Theroy HOC: 
      - Chord 
        - [x] Look for alts to derive note id the "flat" Eb prblem. 
-       - [ ] Set
-
+       - [ ] Change this to functional component
+       - [ ] Needs extra octave
+       - [ ] iradicate the switch
 
    - Reproduce audio:
      - [] Inve
@@ -57,8 +67,12 @@ Rough Outline Output chord name output from virtual piano keys. With a focus on 
      - [x] Install Bootstrap
      - [x] Install classnames
      - [ ] Handling repo files for deployment directly from clone
+     - [x] UI Color (make this more highlighted on black key) 
+
+- Deployment 
 
 Component Tree:
+
 ```
     App.js
      -> Instrument
@@ -70,9 +84,10 @@ Component Tree:
 ```
 
 Analysis:
+- [] Can getChord switch statement be imporved ?
+- Where to handle chord name ? In context ? or directly in component 
+- A purely funcitonal component where to structure
 
-- Where to handle chord name ? In context ? or directly in component itself
- 
 ---
 
 ### V3
@@ -84,6 +99,8 @@ Requirements:
    - refactor to vite or next app
    - reproduce a chord progression visualy
    - Change active color
+   - Optimization
+   - [] Handle inversion
 
 
 -  [] Test cases
