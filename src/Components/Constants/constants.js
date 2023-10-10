@@ -50,57 +50,6 @@ const notes = Object.freeze([
   }
 ]);
 
-// const notes = Object.freeze([
-//   {
-//     id: 1,
-//     name: "C",
-//   },
-//   {
-//     id: 2,
-//     name: "C#",
-//     alt: "Bb"
-//   }, {
-//     id: 3,
-//     name: "D",
-//   }, {
-//     id: 4,
-//     name: "D#",
-//     alt: 'Eb'
-//   }, {
-//     id: 5,
-//     name: "E",
-//   }, {
-//     id: 6,
-//     name: "F",
-//   }, {
-//     id: 7,
-//     name: "F#",
-//     alt: "Gb",
-//   },
-//   {
-//     id: 8,
-//     name: "G",
-//   },
-//   {
-//     id: 9,
-//     name: "G#",
-//     alt: "Ab",
-
-//   },
-//   {
-//     id: 10,
-//     name: "A",
-//   },
-//   {
-//     id: 11,
-//     name: "A#",
-//     alt: "Bb",
-//   },
-//   {
-//     id: 12,
-//     name: "B",
-//   }
-// ]);
 
 //root is omited
 const intervals = {
@@ -117,20 +66,6 @@ const intervals = {
     "major 6th": 9,
     "minor 7th": 10,
     "major 7th": 11
-
-    // "perfect unison": 1,
-    // "minor 2nd": 2,
-    // "major 2nd": 3,
-    // "minor 3rd": 4,
-    // "major 3rd": 5,
-    // "perfect fourth": 6,
-    // "dimished/augmented": 7,
-    // "perfect 5th": 8,
-    // "minor 6th": 9,
-    // "major 6th": 10,
-    // "minor 7th": 11,
-    // "major 7th": 12
-
   },
   three: {
     "Suspended 2": [2, 7],
@@ -170,7 +105,7 @@ const intervals = {
 };
 
 
-
+// Key of C
 const chordArr = [
   { chordName: "Major (triad)", notes: ['C', 'E', 'G'] },
 

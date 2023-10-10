@@ -8,6 +8,7 @@ const PianoKey = ({ id, name, alt }) => {
 
     const [active, setActive] = useState(false);
     const dispatch = useContext(NotesDispatchContext);
+    
     // const formatAltName = () => {
     //   return  name.replace('#',"-sharp").replace('b',"-flat").toLowerCase()
     // }
@@ -33,7 +34,6 @@ const PianoKey = ({ id, name, alt }) => {
 
 
     const keyPressHandler = (event) => {
-
         //Todo: levarage prev state
         // setActive(true)
         setActive((prevActive) => !prevActive)

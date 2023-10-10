@@ -1,20 +1,20 @@
 import { Container, ListGroup, ListGroupItem, Card } from "react-bootstrap"
 import { NotesContext } from "../store/notes-context"
 import { useContext } from "react"
-import Music from "./Music"
+import Harmony from "./Harmony"
 import { chordArr } from "./Constants/constants"
 
-const ChordSelection = () => {
+const ChordName = () => {
 
   const state = useContext(NotesContext);
-
-  //text-center d-flex stretch-all
+  const harmony = new Harmony();
+  
   return (
     <Container>
       <Card className="mb-4 col-lg-12" >
         <Card.Body>
           <Card.Text>
-          <span className="text-success-emphasis text-center">{state.chordName}</span>
+          <span className="text-success-emphasis text-center">{harmony.getChord(state.notesInput)}</span>
           </Card.Text>
         </Card.Body>
       </Card>
@@ -22,4 +22,4 @@ const ChordSelection = () => {
   )
 }
 
-export default ChordSelection
+export default ChordName

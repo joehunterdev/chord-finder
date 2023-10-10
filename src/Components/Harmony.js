@@ -1,11 +1,11 @@
 import { Component } from "react";
 import { notes, intervals } from "./Constants/constants";
 
-class Music extends Component {
-
+class Harmony extends Component {
+  
   constructor() {
-    super();
-    this.state = { intervals: [], chordNameOutput: "", chordInputName: "" };
+     super();
+     this.state = {};
   }
 
   //helper function
@@ -21,7 +21,6 @@ class Music extends Component {
 
   //Get interval between two notes
   getInterval(input) {
-
     let root = this.getNoteNum(String(input[0]));
     let second = this.getNoteNum(String(input[1]));
     return Math.abs(root - second);
@@ -40,9 +39,11 @@ class Music extends Component {
 
   //Get chord name from a bunch of intervals
   getChord(input) {
+
     let input_intervals = [];
     let res = [];
     let chord_name = "";
+
     // for eeach elemenmt in imtervals 
     switch (input.length) {
       case 1:
@@ -68,7 +69,8 @@ class Music extends Component {
             chord_name = input[0] + " " + key;
           }
         });
-        this.setState({ ...this.state, chordNameOutput: chord_name });
+
+        //this.setState({ ...this.state, chordNameOutput: chord_name });
 
         return chord_name;
 
@@ -87,7 +89,8 @@ class Music extends Component {
             chord_name = input[0] + " " + key;
           }
         });
-        this.setState({ ...this.state, chordNameOutput: chord_name });
+
+        //this.setState({ ...this.state, chordNameOutput: chord_name });
 
         return chord_name;
 
@@ -106,7 +109,8 @@ class Music extends Component {
             chord_name = input[0] + " " + key;
           }
         });
-        this.setState({ ...this.state, chordNameOutput: chord_name });
+
+        //this.setState({ ...this.state, chordNameOutput: chord_name });
 
         return chord_name;
 
@@ -128,7 +132,7 @@ class Music extends Component {
           }
         });
 
-        this.setState({ ...this.state, chordNameOutput: chord_name });
+        //this.setState({ ...this.state, chordNameOutput: chord_name });
 
         return chord_name;
 
@@ -159,4 +163,4 @@ class Music extends Component {
   }
 
 }
-export default Music;
+export default Harmony;

@@ -8,7 +8,6 @@ import ChordName from './Components/ChordName'
 
 // import { Button } from "react-bootstrap";
 import { NotesProvider } from "./store/notes-context";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from "react-bootstrap";
 function App() {
   return (

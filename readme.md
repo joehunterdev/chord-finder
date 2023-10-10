@@ -19,11 +19,13 @@ Rough Outline Output chord name output from virtual piano keys. With a focus on 
 
 ### V2
 
-- []  Migrate to React Vite
-  - [] Investigate react-app to vite
+- [x]  Migrate to React Vite
+  -  Investigate react-app to vite
 - [] Setup proper Tests for chord names
-- []  Recursive getChord 
+- [] Recursive getChord 
 - [] Fix redundant code in css ` .black:active { `
+- [] `ol, ul {    /* padding-left: 2rem; */}`
+- [x] Output no chord found
 
 - Features:
    - Piano GUI:
@@ -41,35 +43,41 @@ Rough Outline Output chord name output from virtual piano keys. With a focus on 
        - [x] key up
        - [] Max Keys
        - [] Key layout 
-       - [] Fix key press logic on and off
+       - [x] Fix key press logic on and off
 
    - ChordName Components
-     - [ ] Test and config for all chord types
-
+     - [ ] Jest Test and config for all chord types
+    
    - Context:
      - [x] Add note to noteInput
      - [x] Remove note from noteInput
-   - Music Theroy HOC: 
-     - Chord 
-       - [x] Look for alts to derive note id the "flat" Eb prblem. 
-       - [ ] Change this to functional component
-       - [ ] Needs extra octave
-       - [ ] iradicate the switch
 
+   - Music Theroy HOC: 
+     - Harmony 
+       - [x] Look for alts to derive note id the "flat" Eb prblem. 
+       - ~~ [] Change this to functional component ?? ~~
+       - [] Needs extra octave
+       - [] iradicate the switch
+       - [] Add inversion
+       
    - Reproduce audio:
-     - [] Inve
+       - [] Inve
 
 - Fixes
      - [x] Simplify array handling from constants
      - [ ] Fix design layout to something 
-     - [ ] Fix piano padding layout
+     - [x] Fix piano padding layout
      - [x] Decide on Component Structure & naming
      - [x] Install Bootstrap
      - [x] Install classnames
      - [ ] Handling repo files for deployment directly from clone
      - [x] UI Color (make this more highlighted on black key) 
+     - [x] Fix padding default issue @normalize using import and priority swith
+     - [] Chord name needs to run every time a note is added or removed
 
 - Deployment 
+  - Build for prod
+  - Github actions may be required
 
 Component Tree:
 
@@ -85,9 +93,10 @@ Component Tree:
 
 Analysis:
 - [] Can getChord switch statement be imporved ?
+  - Recursion + Typescript ?
 - Where to handle chord name ? In context ? or directly in component 
-- A purely funcitonal component where to structure
-
+- How we can we optimize events and state updates
+- State and leveraging this in Harmony component
 ---
 
 ### V3
@@ -101,8 +110,6 @@ Requirements:
    - Change active color
    - Optimization
    - [] Handle inversion
-
-
 -  [] Test cases
 -  [] Docs / Diagram
 
@@ -112,7 +119,9 @@ Requirements:
 ### General Notes
 
 #### Music Theory
+
     Semitones	Interval	Abbreviation	Example
+
     0	Unison	PP or P1	C – C
     1	Minor 2nd	m2	C – Db
     2	Major 2nd	M2	C – D
@@ -132,6 +141,16 @@ Requirements:
 
     351 possible chord variations
 the sharp (♯), the flat (♭) and the natural (♮).
+
+  Scenario:
+    - C Eb e () app should try to find the chord name by swithing bass note
+
+    This chord is Eb6sus2\C (Borader chord finding by switching bass note)
+    
+    consonants:     
+    pleasing or  sound. 
+    dissonant sound:
+    jarring or
 
 #### Programmer Notes
 -  [Enums !] https://www.sohamkamani.com/javascript/enums/?utm_content=cmp-true)
