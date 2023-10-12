@@ -1,6 +1,6 @@
 ## Chord Finder
 
-Rough Outline Output chord name output from virtual piano keys. With a focus on ui ux display across multiple devices,Specifically mobile 
+Pure React chord name output from virtual piano keys. With a focus on ui ux display across multiple devices,Specifically mobile 
 
 ### V1
 -  Use intervals to determin chords
@@ -18,14 +18,6 @@ Rough Outline Output chord name output from virtual piano keys. With a focus on 
 ---
 
 ### V2
-
-- [x]  Migrate to React Vite
-  -  Investigate react-app to vite
-- [] Setup proper Tests for chord names
-- [] Recursive getChord 
-- [] Fix redundant code in css ` .black:active { `
-- [] `ol, ul {    /* padding-left: 2rem; */}`
-- [x] Output no chord found
 
 - Features:
    - Piano GUI:
@@ -51,29 +43,42 @@ Rough Outline Output chord name output from virtual piano keys. With a focus on 
    - Context:
      - [x] Add note to noteInput
      - [x] Remove note from noteInput
-
-   - Music Theroy HOC: 
+     - [x] Restructure notes data to include octave
+      - Could be a threat as it will require a lot of refactoring
+     - [x] Sort notes by pitch
+     - [] Object mutation for notesReducer
+ 
+   - Harmony HOC: 
      - Harmony 
        - [x] Look for alts to derive note id the "flat" Eb prblem. 
        - ~~ [] Change this to functional component ?? ~~
        - [] Needs extra octave
        - [] iradicate the switch
-       - [] Add inversion
+       - [] Add inversion logic
+        - *Compromise either reducer complexity or getChord complexity*
        
    - Reproduce audio:
        - [] Inve
 
-- Fixes
-     - [x] Simplify array handling from constants
-     - [ ] Fix design layout to something 
-     - [x] Fix piano padding layout
-     - [x] Decide on Component Structure & naming
-     - [x] Install Bootstrap
-     - [x] Install classnames
-     - [ ] Handling repo files for deployment directly from clone
-     - [x] UI Color (make this more highlighted on black key) 
-     - [x] Fix padding default issue @normalize using import and priority swith
-     - [] Chord name needs to run every time a note is added or removed
+- Misc Bug Fixes
+- [x] Simplify array handling from constants
+- [x] Fix piano padding layout
+- [x] Decide on Component Structure & naming
+- [x] Install Bootstrap
+- [x] Install classnames
+- [ ] Handling repo files for deployment directly from clone
+- [x] UI Color (make this more highlighted on black key) 
+- [x] Fix padding default issue @normalize using import and priority swith
+- [x] Chord name needs to run every time a note is added or removed
+- [ ] Keyup doesnt retrigger chord name
+- [x] `ol, ul {    /* padding-left: 2rem; */}` layout issue
+- [x]  Migrate to React Vite
+  -  Investigate react-app to vite
+- [] Setup proper Tests for chord names
+- [] getChord could be simpler (Recursive)
+- [] Fix redundant code in css ` .black:active { `
+- [x] Output no chord found
+
 
 - Deployment 
   - Build for prod
@@ -95,8 +100,14 @@ Analysis:
 - [] Can getChord switch statement be imporved ?
   - Recursion + Typescript ?
 - Where to handle chord name ? In context ? or directly in component 
+  - Directly in component to levarage state updates
+- 
 - How we can we optimize events and state updates
 - State and leveraging this in Harmony component
+- Treats:
+  - When adding an extra octave will need to add a new note object in context
+- [] let res = []; ? is redundant ?
+
 ---
 
 ### V3
@@ -139,6 +150,8 @@ Requirements:
 
     The 18 chord formulas: major, sus2, sus4, 5, maj7, maj6, minor, augmented, diminished, minor7, minor7♭5, dim7, dom7, minor7#5, maj7#5, maj7♭5, dom7#5, dom7♭5.
 
+    Seven or eight is typcially the max number of notes in a chord.
+
     351 possible chord variations
 the sharp (♯), the flat (♭) and the natural (♮).
 
@@ -147,10 +160,19 @@ the sharp (♯), the flat (♭) and the natural (♮).
 
     This chord is Eb6sus2\C (Borader chord finding by switching bass note)
     
-    consonants:     
+    **consonants**:     
     pleasing or  sound. 
-    dissonant sound:
+    **dissonant** sound:
     jarring or
+
+    The pitch middle C is C4, which is useful to memorize.
+
+    The notes (C, C# or Db, D, D# or Eb, D, F, F# or Gb, G, G# or Ab, A# or Bb, B) are followed by an octave number. For example: C2, F#3, and Bb4. These may also be written in various publications as: C(2), F#(3), Bb(4), C[2], F#[3], Bb[4], or C2, F#3, and Bb4.
+
+
+    The reason the keyboard is designed around the C major scale does not come from piano - it started with the organ. Organ builders discovered long ago that a pipe of 8 feet will give a note close to the pitch called C. This was a convenient place to start
+
+    An octave ! despite the way it looks c1 still goes to b1 (even tho these are not in order)
 
 #### Programmer Notes
 -  [Enums !] https://www.sohamkamani.com/javascript/enums/?utm_content=cmp-true)

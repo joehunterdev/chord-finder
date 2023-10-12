@@ -1,8 +1,8 @@
 import PianoKeys from "./PianoKeys"
 
 const Piano = () => {
-
-    return(<PianoKeys amount={8}></PianoKeys>)
+    
+    return(<PianoKeys octave={4}></PianoKeys>)
 }
 
 export default Piano;

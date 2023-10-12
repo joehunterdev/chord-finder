@@ -1,37 +1,75 @@
-import { createContext, useReducer } from "react";
+import React, { createContext, useReducer, memo } from "react";
+import { notes } from "../Constants/constants";
+//this will create more code outputing iterating through the state
+// could be a single array of notesInput appended with octave
+const initialState = [
+  { octave: 3, notesInput: [] },
+  { octave: 4, notesInput: [] },
+  { octave: 5, notesInput: [] },
+  { octave: 6, notesInput: [] },
+];
 
-export const NotesContext = createContext(null);
+export const NotesContext = createContext(initialState);
 export const NotesDispatchContext = createContext(null);
 
-const initialState = { notesInput: [] };
+const notesReducer = (state, action) => {
 
-export function NotesProvider({ children }) {
-  const [chord, dispatch] = useReducer(notesReducer, initialState);
-
-  return (
-    <NotesContext.Provider value={chord}>
-      <NotesDispatchContext.Provider value={dispatch}>
-        {children}
-      </NotesDispatchContext.Provider>
-    </NotesContext.Provider>
-  );
-}
-function notesReducer(state, action) {
   switch (action.type) {
+
+    // case "keyDown": {
+    //   const objToMutate = state.find((obj) => obj.octave === action.octave);
+    //   if (objToMutate) {
+    //     const updatedNotesInput = [...objToMutate.notesInput, action.name]
+    //     return state.map((obj) =>
+    //       obj.octave === action.octave ? { ...obj, notesInput: updatedNotesInput } : obj
+    //     );
+    //   }
+    //   return state;
+    // }
+    
     case "keyDown": {
-      return {
-        notesInput: [...state.notesInput, action.name],
-      };
+      const objToMutate = state.find((obj) => obj.octave === action.octave);
+      if (objToMutate) {
+        const updatedNotesInput = [...objToMutate.notesInput, action.name];
+        updatedNotesInput.sort((a, b) => {
+          const aIndex = notes.findIndex((note) => note.name === a);
+          const bIndex = notes.findIndex((note) => note.name === b);
+          return aIndex - bIndex;
+        });
+        return state.map((obj) =>
+          obj.octave === action.octave ? { ...obj, notesInput: updatedNotesInput } : obj
+        );
+      }
+      return state;
     }
 
     case "keyUp": {
-      return {
-        notesInput: [...state.notesInput.filter((t) => t !== action.name)], //return everything thats not the note passed
-      };
+      const objToMutate = state.find((obj) => obj.octave === action.octave);
+      if (objToMutate) {
+        const updatedNotesInput = objToMutate.notesInput.filter((t) => t !== action.name);
+        return state.map((obj) =>
+          obj.octave === action.octave ? { ...obj, notesInput: updatedNotesInput } : obj
+        );
+      }
+      return state;
     }
 
     default: {
       throw Error("Unknown action: " + action.type);
     }
   }
-}
+};
+
+const NotesProvider = memo(({ children }) => {
+  const [noteData, dispatch] = useReducer(notesReducer, initialState);
+
+  return (
+    <NotesContext.Provider value={noteData}>
+      <NotesDispatchContext.Provider value={dispatch}>
+        {children}
+      </NotesDispatchContext.Provider>
+    </NotesContext.Provider>
+  );
+});
+
+export { NotesProvider };

@@ -19,6 +19,16 @@ class Harmony extends Component {
     return res.id;
   }
 
+  getNoteNums = (note_name) => {
+     
+     
+    
+  }
+
+  getOcatve = (note_name) => {
+
+  }
+
   //Get interval between two notes
   getInterval(input) {
     let root = this.getNoteNum(String(input[0]));
@@ -28,7 +38,7 @@ class Harmony extends Component {
 
   //Type comparison magic
   arrayEquals(a, b) {
-    return (
+    return (    
       Array.isArray(a) &&
       Array.isArray(b) &&
       a.length === b.length &&
@@ -43,8 +53,7 @@ class Harmony extends Component {
     let input_intervals = [];
     let res = [];
     let chord_name = "";
-
-    // for eeach elemenmt in imtervals 
+  
     switch (input.length) {
       case 1:
         return input[0];
@@ -160,6 +169,29 @@ class Harmony extends Component {
         return 'no chord found'
     }
 
+  }
+
+  getChord2(input) {
+    if (input.length === 1) {
+      return input[0];
+    }
+  
+    const intervals = input.map((note, index) => {
+      if (index === 0) {
+        return null;
+      }
+      return this.getInterval([input[0], note]);
+    });
+  
+    const chordName = Object.keys(chords).find((key) =>
+      this.arrayEquals(chords[key], intervals)
+    );
+  
+    if (chordName) {
+      return input[0] + " " + chordName;
+    }
+  
+    return "";
   }
 
 }
