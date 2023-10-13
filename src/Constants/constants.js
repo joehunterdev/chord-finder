@@ -69,19 +69,26 @@ const intervals = {
   },
   three: {
     "Suspended 2": [2, 7],
+    "Suspended 4": [4, 5],
     "Minor (triad)": [3, 7],
     "Major (triad)": [4, 7], // this means intervals
-    "Dimished":[3, 6],
+    "Dimished": [3, 6],
     "Augmented": [4, 8]
   },
   four: {
-    "Major 6th": [4, 7, 9],
+    "2": [2, 4, 7],
+    "6Sus2": [2, 7, 9],
+    "Minor 7th": [3, 7, 1],
     "Minor 6th ": [3, 7, 9],
+    "Dimnished 7th": [3, 6, 9],
+    "Minor-Major 7th": [3, 7, 11],
+    "m7b5 (Minor 7th flat 5th)": [3, 6, 10],
+    "Major 6th": [4, 7, 9],
+    "7": [4, 7, 10],
     "Major 7th ": [4, 7, 11],
     "Dominant 7th": [4, 7, 1],
-    "Minor-Major 7th":[3, 7, 11],
-    "Minor 7th": [3, 7, 1]
-
+    "7b5 (7th flat 5th)": [4, 6, 10],
+    "7#5 (7th sharp 5th)": [4, 8, 10]
   },
   five: {
     "Major 6-9th": [4, 7, 9, 2],
@@ -98,54 +105,39 @@ const intervals = {
   },
   seven: {
     "Major 13th": [4, 7, 11, 2, 5, 9],
-    "Minor 13th":[3, 7, 1, 2, 5, 9],
+    "Minor 13th": [3, 7, 1, 2, 5, 9],
     "Dominant 13th": [4, 7, 1, 2, 5, 9],
-    
   },
 };
 
 
-// Key of C
 const chordArr = [
   { chordName: "Major (triad)", notes: ['C', 'E', 'G'] },
-
-  { chordName: "Major 6th ", notes: ['C', 'E', 'G', 'A'] },
-
-  { chordName: "Major 6/9 ", notes: ['C', 'E', 'G', 'A', 'D'] },
-
-  { chordName: "Major 7th ", notes: ['C', 'E', 'G', 'B'] },
-
-  { chordName: "Major 9th ", notes: ['C', 'E', 'G', 'B', 'D'] },
-  { chordName: "Major 11th ", notes: ['C', 'E', 'G', 'B', 'D', 'F'] },
-
-  { chordName: "Major 13th ", notes: ['C', 'E', 'G', 'B', 'D', 'F', 'A'] },
-
   { chordName: "Minor (triad)", notes: ['C', 'Eb', 'G'] },
-
-  { chordName: "Minor 6th", notes: ['C', 'Eb', 'G', 'A'] },
-  { chordName: "Minor 7th ", notes: ['C', 'Eb', 'G', 'Bb'] },
-  { chordName: "Minor 9th ", notes: ['C', 'Eb', 'G', 'Bb', 'D'] },
-
-  { chordName: "Minor 11th ", notes: ['C', 'Eb', 'G', 'Bb', 'D', 'F'] },
-  { chordName: "Minor 13th ", notes: ['C', 'Eb', 'G', 'Bb', 'D', 'F', 'A'] },
-
-  { chordName: "Minor Major 7th ", notes: ['C', 'Eb', 'G', 'B'] },
-
-  { chordName: "Dominant 7th", notes: ['C', 'E', 'G', 'Bb'] },
-
-  { chordName: "Dominant 9th", notes: ['C', 'E', 'G', 'Bb', 'D'] },
-  { chordName: "Dominant 11th", notes: ['C', 'E', 'G', 'Bb', 'D', 'F'] },
-  { chordName: "Dominant 13th", notes: ['C', 'E', 'G', 'Bb', 'D', 'F', 'A'] },
-
   { chordName: "Diminished", notes: ['C', 'Eb', 'Gb'] },
-
+  { chordName: "Suspended 2", notes: ['C', 'D', 'G'] },
   { chordName: "Augmented", notes: ['C', 'E', 'G#'] },
-
-  { chordName: "Suspended 2", notes: ['C', 'D', 'G'] }
-
+  { chordName: "Major 6th ", notes: ['C', 'E', 'G', 'A'] },
+  { chordName: "Minor 6th", notes: ['C', 'Eb', 'G', 'A'] },
+  { chordName: "Dominant 7th", notes: ['C', 'E', 'G', 'Bb'] },
+  { chordName: "Minor Major 7th ", notes: ['C', 'Eb', 'G', 'B'] },
+  { chordName: "Major 7th ", notes: ['C', 'E', 'G', 'B'] },
+  { chordName: "Dominant 9th", notes: ['C', 'E', 'G', 'Bb', 'D'] },
+  { chordName: "Minor 7th ", notes: ['C', 'Eb', 'G', 'Bb'] },
+  { chordName: "Major 9th ", notes: ['C', 'E', 'G', 'B', 'D'] },
+  { chordName: "Minor 9th ", notes: ['C', 'Eb', 'G', 'Bb', 'D'] },
+  { chordName: "7#5 (7th sharp 5th)", notes: [ 'C', 'E', 'G#', 'Bb' ] },
+  { chordName: "7b5 (7th flat 5th)", notes: [ 'C', 'E', 'Gb', 'Bb' ] },
+  { chordName: "Major 6/9 ", notes: ['C', 'E', 'G', 'A', 'D'] },
+  { chordName: "Minor 11th ", notes: ['C', 'Eb', 'G', 'Bb', 'D', 'F'] },
+  { chordName: "Dominant 11", notes: ['C', 'E', 'G', 'Bb', 'D', 'F'] },
+  { chordName: "Major 11th ", notes: ['C', 'E', 'G', 'B', 'D', 'F'] },
+  { chordName: "Minor 13th ", notes: ['C', 'Eb', 'G', 'Bb', 'D', 'F', 'A'] },
+  { chordName: "Dominant 13th", notes: ['C', 'E', 'G', 'Bb', 'D', 'F', 'A'] },
+  { chordName: "Major 13th ", notes: ['C', 'E', 'G', 'B', 'D', 'F', 'A'] },
 ];
 
- 
 
-export { notes, intervals,chordArr };
+
+export { notes, intervals, chordArr };
 

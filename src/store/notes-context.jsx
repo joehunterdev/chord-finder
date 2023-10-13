@@ -1,7 +1,6 @@
 import React, { createContext, useReducer, memo } from "react";
 import { notes } from "../Constants/constants";
-//this will create more code outputing iterating through the state
-// could be a single array of notesInput appended with octave
+
 const initialState = [
   { octave: 3, notesInput: [] },
   { octave: 4, notesInput: [] },
@@ -15,22 +14,13 @@ export const NotesDispatchContext = createContext(null);
 const notesReducer = (state, action) => {
 
   switch (action.type) {
-
-    // case "keyDown": {
-    //   const objToMutate = state.find((obj) => obj.octave === action.octave);
-    //   if (objToMutate) {
-    //     const updatedNotesInput = [...objToMutate.notesInput, action.name]
-    //     return state.map((obj) =>
-    //       obj.octave === action.octave ? { ...obj, notesInput: updatedNotesInput } : obj
-    //     );
-    //   }
-    //   return state;
-    // }
-    
+ 
     case "keyDown": {
+      //Get object by octave
       const objToMutate = state.find((obj) => obj.octave === action.octave);
       if (objToMutate) {
         const updatedNotesInput = [...objToMutate.notesInput, action.name];
+        //sort by pitch
         updatedNotesInput.sort((a, b) => {
           const aIndex = notes.findIndex((note) => note.name === a);
           const bIndex = notes.findIndex((note) => note.name === b);
@@ -40,7 +30,7 @@ const notesReducer = (state, action) => {
           obj.octave === action.octave ? { ...obj, notesInput: updatedNotesInput } : obj
         );
       }
-      return state;
+      return state; //return new state
     }
 
     case "keyUp": {

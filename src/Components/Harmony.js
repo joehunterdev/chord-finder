@@ -1,33 +1,38 @@
 import { Component } from "react";
-import { notes, intervals } from "./Constants/constants";
+import { notes, intervals } from '../Constants/constants'
 
 class Harmony extends Component {
-  
-  constructor() {
-     super();
-     this.state = {};
-  }
 
-  //helper function
-  notesToIntervals = (name) => {
-    this.setState({ ...this.state, chordInputName: this.state.name });
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     notesInput: [],
+  //     chordInputName: "",
+  //     intervals: [],
+  //     isMounted: false, // Add a boolean flag to track whether the component is mounted
+  //   };
+  //   // this.notesToIntervals = this.notesToIntervals.bind(this);
+  // }
+
+  // componentDidMount() {
+  //   this.setState({ isMounted: true }); // Set the flag to true when the component is mounted
+  // }
+
+  // componentWillUnmount() {
+  //   this.setState({ isMounted: false }); // Set the flag to false when the component is unmounted
+  // }
+
+  // //helper function
+  // notesToIntervals = (name) => {
+  //   this.setState({ ...this.state, chordInputName: this.state.name });
+  // }
 
   getNoteNum = (note_name) => {
-    //find note id using sharp or flat  
+    //find note id using sharp or flat
     let res = notes.find((note) => { return (note.name === note_name || note.alt === note_name) }); //indexOf ? //|| note.alt === note_name
-    return res.id;
+    if (res) return res.id;
   }
 
-  getNoteNums = (note_name) => {
-     
-     
-    
-  }
-
-  getOcatve = (note_name) => {
-
-  }
 
   //Get interval between two notes
   getInterval(input) {
@@ -38,7 +43,7 @@ class Harmony extends Component {
 
   //Type comparison magic
   arrayEquals(a, b) {
-    return (    
+    return (
       Array.isArray(a) &&
       Array.isArray(b) &&
       a.length === b.length &&
@@ -53,16 +58,23 @@ class Harmony extends Component {
     let input_intervals = [];
     let res = [];
     let chord_name = "";
-  
+
     switch (input.length) {
+
       case 1:
-        return input[0];
+
+        chord_name = input[0];
+
       case 2:
         chord_name = Object.keys(intervals.two).find(
           (key) => intervals.two[key] === this.getInterval([input[0], input[1]])
         );
 
-        return chord_name;
+        // if (this.state.isMounted) {
+        //   this.setState({ intervals: input_intervals });
+        // }
+
+        return { name: chord_name, intervals: input_intervals };
 
       case 3:
 
@@ -79,9 +91,8 @@ class Harmony extends Component {
           }
         });
 
-        //this.setState({ ...this.state, chordNameOutput: chord_name });
 
-        return chord_name;
+        return { name: chord_name, intervals: input_intervals };
 
       case 4:
         //Todo: this doesnt look correct but works
@@ -99,9 +110,8 @@ class Harmony extends Component {
           }
         });
 
-        //this.setState({ ...this.state, chordNameOutput: chord_name });
 
-        return chord_name;
+        return { name: chord_name, intervals: input_intervals };
 
       case 5:
 
@@ -119,9 +129,8 @@ class Harmony extends Component {
           }
         });
 
-        //this.setState({ ...this.state, chordNameOutput: chord_name });
 
-        return chord_name;
+        return { name: chord_name, intervals: input_intervals };
 
       case 6:
 
@@ -141,9 +150,8 @@ class Harmony extends Component {
           }
         });
 
-        //this.setState({ ...this.state, chordNameOutput: chord_name });
 
-        return chord_name;
+        return { name: chord_name, intervals: input_intervals };
 
       case 7:
 
@@ -163,7 +171,7 @@ class Harmony extends Component {
           }
         });
 
-        return chord_name;
+        return { name: chord_name, intervals: input_intervals };
 
       default:
         return 'no chord found'
@@ -175,22 +183,22 @@ class Harmony extends Component {
     if (input.length === 1) {
       return input[0];
     }
-  
+
     const intervals = input.map((note, index) => {
       if (index === 0) {
         return null;
       }
       return this.getInterval([input[0], note]);
     });
-  
+
     const chordName = Object.keys(chords).find((key) =>
       this.arrayEquals(chords[key], intervals)
     );
-  
+
     if (chordName) {
       return input[0] + " " + chordName;
     }
-  
+
     return "";
   }
 

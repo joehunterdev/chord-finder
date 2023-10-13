@@ -21,20 +21,20 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
 
 - Features:
    - Piano GUI:
-     - [x] Do active notes
-     - [x] markup css
-     - [X] 12 Note input
-     - classNames  helper 
-       - [x] Black note
-       - [x] White note
-       - [x] friendly note name in class not C#
+    - [x] Do active notes
+    - [x] markup css
+    - [X] 12 Note input
+    - [] Remove cursor from key its annoying
+    - [x] Black note
+    - [x] White note
+    - [x] friendly note name in class not C#
 
    - Piano Component Controls: 
      - Note click handler
        - [x] key down long press state (useEffect ?)
        - [x] key up
        - [] Max Keys
-       - [] Key layout 
+       - [x] Key layout x2 (octaves)
        - [x] Fix key press logic on and off
 
    - ChordName Components
@@ -46,39 +46,52 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
      - [x] Restructure notes data to include octave
       - Could be a threat as it will require a lot of refactoring
      - [x] Sort notes by pitch
-     - [] Object mutation for notesReducer
+     - [x] Object mutation for notesReducer
  
    - Harmony HOC: 
      - Harmony 
        - [x] Look for alts to derive note id the "flat" Eb prblem. 
        - ~~ [] Change this to functional component ?? ~~
-       - [] Needs extra octave
-       - [] iradicate the switch
+       - [x] Needs extra octave
+       - [] iradicate the switch ?
        - [] Add inversion logic
         - *Compromise either reducer complexity or getChord complexity*
-       
+       - [] Test cases
+          - ~~major~~
+          - ~~minor~~
+          - ~~augmented~~
+          - ~~diminished~~
+          - 8 types of 7th  
+            - ([x]7, ~~maj7, m7, m(maj7),~~ [x]dim7, [x] 7b5, [x]7#5, [x]m7b5)
+          - ~~ninth (major/minor)~~
+          - ~~eleventh (major/minor)~~
+          - ~~13th (major/minor)~~
+          - ~~sixth (major/minor)~~
+          - ~~sus2~~ 
+          - [x] sus4 
+          - [x] 2
+
    - Reproduce audio:
-       - [] Inve
+       - [] Play sound
 
 - Misc Bug Fixes
-- [x] Simplify array handling from constants
-- [x] Fix piano padding layout
-- [x] Decide on Component Structure & naming
-- [x] Install Bootstrap
-- [x] Install classnames
-- [ ] Handling repo files for deployment directly from clone
-- [x] UI Color (make this more highlighted on black key) 
-- [x] Fix padding default issue @normalize using import and priority swith
-- [x] Chord name needs to run every time a note is added or removed
-- [ ] Keyup doesnt retrigger chord name
-- [x] `ol, ul {    /* padding-left: 2rem; */}` layout issue
-- [x]  Migrate to React Vite
-  -  Investigate react-app to vite
-- [] Setup proper Tests for chord names
-- [] getChord could be simpler (Recursive)
-- [] Fix redundant code in css ` .black:active { `
-- [x] Output no chord found
-
+  - [x] Simplify array handling from constants
+  - [x] Fix piano padding layout
+  - [x] Decide on Component Structure & naming
+  - [x] Install Bootstrap
+  - [x] Install classnames
+  - [ ] Handling repo files for deployment directly from clone
+  - [x] UI Color (make this more highlighted on black key) 
+  - [x] Fix padding default issue @normalize using import and priority swith
+  - [x] Chord name needs to run every time a note is added or removed
+  - [ ] Keyup doesnt retrigger chord name
+  - [x] `ol, ul {    /* padding-left: 2rem; */}` layout issue
+  - [x]  Migrate to React Vite
+    -  Investigate react-app to vite
+  - [x] Setup proper Tests for chord names
+  - [] getChord could be simpler (Recursive)
+  - [] Fix redundant code in css ` .black:active { `
+  - [x] Output no chord found
 
 - Deployment 
   - Build for prod
@@ -97,16 +110,20 @@ Component Tree:
 ```
 
 Analysis:
+
 - [] Can getChord switch statement be imporved ?
   - Recursion + Typescript ?
 - Where to handle chord name ? In context ? or directly in component 
   - Directly in component to levarage state updates
-- 
 - How we can we optimize events and state updates
 - State and leveraging this in Harmony component
+- let res = []; ? is redundant ?
+- The sort on notes could cause issues when coming to do inversions
+
 - Treats:
   - When adding an extra octave will need to add a new note object in context
-- [] let res = []; ? is redundant ?
+  - Smells like useEffect and useRef could be levaraged to get around this setState issue
+  - `interface HarmonyProps {` ?
 
 ---
 
@@ -159,7 +176,9 @@ the sharp (♯), the flat (♭) and the natural (♮).
     - C Eb e () app should try to find the chord name by swithing bass note
 
     This chord is Eb6sus2\C (Borader chord finding by switching bass note)
-    
+
+    sus2 and sus4 chords.
+
     **consonants**:     
     pleasing or  sound. 
     **dissonant** sound:
@@ -169,6 +188,8 @@ the sharp (♯), the flat (♭) and the natural (♮).
 
     The notes (C, C# or Db, D, D# or Eb, D, F, F# or Gb, G, G# or Ab, A# or Bb, B) are followed by an octave number. For example: C2, F#3, and Bb4. These may also be written in various publications as: C(2), F#(3), Bb(4), C[2], F#[3], Bb[4], or C2, F#3, and Bb4.
 
+    Goal:
+     minor, augmented, diminished, 8 types of 7th chords (7, maj7, m7, m(maj7), dim7, 7b5, 7#5, m7b5), ninth chords, eleventh chords, 13th chords, sixth chords, sus2 and sus4 chords.
 
     The reason the keyboard is designed around the C major scale does not come from piano - it started with the organ. Organ builders discovered long ago that a pipe of 8 feet will give a note close to the pitch called C. This was a convenient place to start
 
