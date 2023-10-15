@@ -1,31 +1,8 @@
 import { Component } from "react";
-import { notes, intervals } from '../Constants/constants'
+import { notes, stackedIntervals, chordArr } from '../Constants/constants'
+import ChordName from "./ChordName";
 
 class Harmony extends Component {
-
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     notesInput: [],
-  //     chordInputName: "",
-  //     intervals: [],
-  //     isMounted: false, // Add a boolean flag to track whether the component is mounted
-  //   };
-  //   // this.notesToIntervals = this.notesToIntervals.bind(this);
-  // }
-
-  // componentDidMount() {
-  //   this.setState({ isMounted: true }); // Set the flag to true when the component is mounted
-  // }
-
-  // componentWillUnmount() {
-  //   this.setState({ isMounted: false }); // Set the flag to false when the component is unmounted
-  // }
-
-  // //helper function
-  // notesToIntervals = (name) => {
-  //   this.setState({ ...this.state, chordInputName: this.state.name });
-  // }
 
   getNoteNum = (note_name) => {
     //find note id using sharp or flat
@@ -53,154 +30,160 @@ class Harmony extends Component {
 
 
   //Get chord name from a bunch of intervals
+  // getChord(input) {
+
+  //   let input_intervals = [];
+  //   let res = [];
+  //   let chord_name = "";
+
+  //   switch (input.length) {
+
+  //     case 1:
+
+  //       chord_name = input[0];
+
+  //     case 2:
+  //       chord_name = Object.keys(intervals.two).find(
+  //         (key) => intervals.two[key] === this.getInterval([input[0], input[1]])
+  //       );
+
+  //       // if (this.state.isMounted) {
+  //       //   this.setState({ intervals: input_intervals });
+  //       // }
+
+  //       return { name: chord_name, intervals: input_intervals };
+
+  //     case 3:
+
+  //       input_intervals = [
+  //         this.getInterval([input[0], input[1]]),
+  //         this.getInterval([input[0], input[2]]),
+  //       ];
+
+  //       res = Object.keys(intervals.three).forEach((key, val) => {
+  //         if (
+  //           this.arrayEquals(intervals.three[key], input_intervals) === true
+  //         ) {
+  //           chord_name = input[0] + " " + key;
+  //         }
+  //       });
+
+
+  //       return { name: chord_name, intervals: input_intervals };
+
+  //     case 4:
+  //       //Todo: this doesnt look correct but works
+  //       // get from note 1 to note 2, note 1 to note 3
+  //       input_intervals = [
+  //         this.getInterval([input[0], input[1]]),
+  //         this.getInterval([input[0], input[2]]),
+  //         this.getInterval([input[0], input[3]]),
+  //       ];
+  //       res = Object.keys(intervals.four).forEach((key, val) => {
+  //         if (
+  //           this.arrayEquals(intervals.four[key], input_intervals) === true
+  //         ) {
+  //           chord_name = input[0] + " " + key;
+  //         }
+  //       });
+
+
+  //       return { name: chord_name, intervals: input_intervals };
+
+  //     case 5:
+
+  //       input_intervals = [
+  //         this.getInterval([input[0], input[1]]),
+  //         this.getInterval([input[0], input[2]]),
+  //         this.getInterval([input[0], input[3]]),
+  //         this.getInterval([input[0], input[4]])
+  //       ];
+  //       res = Object.keys(intervals.five).forEach((key, val) => {
+  //         if (
+  //           this.arrayEquals(intervals.five[key], input_intervals) === true
+  //         ) {
+  //           chord_name = input[0] + " " + key;
+  //         }
+  //       });
+
+
+  //       return { name: chord_name, intervals: input_intervals };
+
+  //     case 6:
+
+  //       input_intervals = [
+  //         this.getInterval([input[0], input[1]]),
+  //         this.getInterval([input[0], input[2]]),
+  //         this.getInterval([input[0], input[3]]),
+  //         this.getInterval([input[0], input[4]]),
+  //         this.getInterval([input[0], input[5]])
+  //       ];
+
+  //       res = Object.keys(intervals.six).forEach((key, val) => {
+  //         if (
+  //           this.arrayEquals(intervals.six[key], input_intervals) === true
+  //         ) {
+  //           chord_name = input[0] + " " + key;
+  //         }
+  //       });
+
+
+  //       return { name: chord_name, intervals: input_intervals };
+
+  //     case 7:
+
+  //       input_intervals = [
+  //         this.getInterval([input[0], input[1]]),
+  //         this.getInterval([input[0], input[2]]),
+  //         this.getInterval([input[0], input[3]]),
+  //         this.getInterval([input[0], input[4]]),
+  //         this.getInterval([input[0], input[5]]),
+  //         this.getInterval([input[0], input[6]])
+  //       ];
+  //       res = Object.keys(intervals.seven).forEach((key, val) => {
+  //         if (
+  //           this.arrayEquals(intervals.seven[key], input_intervals) === true
+  //         ) {
+  //           chord_name = input[0] + " " + key;
+  //         }
+  //       });
+
+  //       return { name: chord_name, intervals: input_intervals };
+
+  //     default:
+  //       return 'no chord found'
+  //   }
+
+  // }
+
+
+
   getChord(input) {
 
-    let input_intervals = [];
-    let res = [];
-    let chord_name = "";
+    let userIntervals = [];
+    let chordName = "";
 
-    switch (input.length) {
+    for (let i = 0; i < input.length - 1; i++) {
 
-      case 1:
+      userIntervals.push(this.getInterval([input[i], input[i + 1]]));
 
-        chord_name = input[0];
-
-      case 2:
-        chord_name = Object.keys(intervals.two).find(
-          (key) => intervals.two[key] === this.getInterval([input[0], input[1]])
-        );
-
-        // if (this.state.isMounted) {
-        //   this.setState({ intervals: input_intervals });
-        // }
-
-        return { name: chord_name, intervals: input_intervals };
-
-      case 3:
-
-        input_intervals = [
-          this.getInterval([input[0], input[1]]),
-          this.getInterval([input[0], input[2]]),
-        ];
-
-        res = Object.keys(intervals.three).forEach((key, val) => {
-          if (
-            this.arrayEquals(intervals.three[key], input_intervals) === true
-          ) {
-            chord_name = input[0] + " " + key;
-          }
-        });
-
-
-        return { name: chord_name, intervals: input_intervals };
-
-      case 4:
-        //Todo: this doesnt look correct but works
-        // get from note 1 to note 2, note 1 to note 3
-        input_intervals = [
-          this.getInterval([input[0], input[1]]),
-          this.getInterval([input[0], input[2]]),
-          this.getInterval([input[0], input[3]]),
-        ];
-        res = Object.keys(intervals.four).forEach((key, val) => {
-          if (
-            this.arrayEquals(intervals.four[key], input_intervals) === true
-          ) {
-            chord_name = input[0] + " " + key;
-          }
-        });
-
-
-        return { name: chord_name, intervals: input_intervals };
-
-      case 5:
-
-        input_intervals = [
-          this.getInterval([input[0], input[1]]),
-          this.getInterval([input[0], input[2]]),
-          this.getInterval([input[0], input[3]]),
-          this.getInterval([input[0], input[4]])
-        ];
-        res = Object.keys(intervals.five).forEach((key, val) => {
-          if (
-            this.arrayEquals(intervals.five[key], input_intervals) === true
-          ) {
-            chord_name = input[0] + " " + key;
-          }
-        });
-
-
-        return { name: chord_name, intervals: input_intervals };
-
-      case 6:
-
-        input_intervals = [
-          this.getInterval([input[0], input[1]]),
-          this.getInterval([input[0], input[2]]),
-          this.getInterval([input[0], input[3]]),
-          this.getInterval([input[0], input[4]]),
-          this.getInterval([input[0], input[5]])
-        ];
-
-        res = Object.keys(intervals.six).forEach((key, val) => {
-          if (
-            this.arrayEquals(intervals.six[key], input_intervals) === true
-          ) {
-            chord_name = input[0] + " " + key;
-          }
-        });
-
-
-        return { name: chord_name, intervals: input_intervals };
-
-      case 7:
-
-        input_intervals = [
-          this.getInterval([input[0], input[1]]),
-          this.getInterval([input[0], input[2]]),
-          this.getInterval([input[0], input[3]]),
-          this.getInterval([input[0], input[4]]),
-          this.getInterval([input[0], input[5]]),
-          this.getInterval([input[0], input[6]])
-        ];
-        res = Object.keys(intervals.seven).forEach((key, val) => {
-          if (
-            this.arrayEquals(intervals.seven[key], input_intervals) === true
-          ) {
-            chord_name = input[0] + " " + key;
-          }
-        });
-
-        return { name: chord_name, intervals: input_intervals };
-
-      default:
-        return 'no chord found'
     }
 
-  }
+    if(userIntervals.length === 0) return 'no chord found'
 
-  getChord2(input) {
-    if (input.length === 1) {
-      return input[0];
-    }
+    let stackedInterval2 = stackedIntervals[parseInt(input.length)];
+ 
+    Object.keys(stackedInterval2).forEach((key, val) => {     
 
-    const intervals = input.map((note, index) => {
-      if (index === 0) {
-        return null;
+      if (this.arrayEquals(stackedInterval2[key], userIntervals)) {
+        chordName = key;
       }
-      return this.getInterval([input[0], note]);
-    });
+    } );
+      
+    return { name: chordName, intervals: userIntervals };
 
-    const chordName = Object.keys(chords).find((key) =>
-      this.arrayEquals(chords[key], intervals)
-    );
-
-    if (chordName) {
-      return input[0] + " " + chordName;
-    }
-
-    return "";
   }
+
 
 }
 export default Harmony;
