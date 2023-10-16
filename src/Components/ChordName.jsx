@@ -1,8 +1,6 @@
 import {
   Container,
   Row,
-  ListGroup,
-  ListGroupItem,
   Card,
 } from "react-bootstrap";
 import { NotesContext } from "../store/notes-context";
@@ -11,6 +9,7 @@ import Harmony from "./Harmony";
 const harmony = new Harmony();
 
 const ChordName = () => {
+
   const state = useContext(NotesContext);
   const notesInputs = state.map((obj) => obj.notesInput).flat();
   const chordData = harmony.getChord(notesInputs);
@@ -20,7 +19,7 @@ const ChordName = () => {
       <Container className="mb-4 col-lg-3">
         <Card>
           <Card.Body>
-            <Card.Title>Chord Name</Card.Title>
+            <Card.Title>Name</Card.Title>
             <Card.Text>
               <span className="text-success-emphasis text-center">
                 {chordData.name}
@@ -32,7 +31,7 @@ const ChordName = () => {
       <Container className="mb-4 col-lg-3">
         <Card>
           <Card.Body>
-            <Card.Title>Chord Notes</Card.Title>
+            <Card.Title>Notes</Card.Title>
             <Card.Text>
               <span className="text-success-emphasis text-center">
                 {notesInputs.join(" ")}
@@ -44,10 +43,12 @@ const ChordName = () => {
       <Container className="mb-4 col-lg-4">
         <Card>
           <Card.Body>
-            <Card.Title>Chord Intervals</Card.Title>
+            <Card.Title>Intervals</Card.Title>
             <Card.Text>
               <span className="text-success-emphasis text-center">
                 {" "}
+                {chordData.intervals && harmony.getIntervalNames(chordData.intervals).join(" - ")}
+                <br />
                 {chordData.intervals && chordData.intervals.join(", ")}
               </span>
             </Card.Text>

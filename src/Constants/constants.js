@@ -51,67 +51,8 @@ const notes = Object.freeze([
 ]);
 
 
-// //root is omited
-// const semiTonalIntervals = {
-//   two: {
-//     "perfect unison": 0,
-//     "minor 2nd": 1,
-//     "major 2nd": 2,
-//     "minor 3rd": 3,
-//     "major 3rd": 4,
-//     "perfect fourth": 5,
-//     "dimished/augmented": 6,
-//     "perfect 5th": 7,
-//     "minor 6th": 8,
-//     "major 6th": 9,
-//     "minor 7th": 10,
-//     "major 7th": 11
-//   },
-//   three: {
-//     "Suspended 2": [2, 7],
-//     "Suspended 4": [4, 5],
-//     "Minor": [3, 7],
-//     "Major": [4, 7], // this means intervals
-//     "Dimished": [3, 6],
-//     "Augmented": [4, 8]
-//   },
-//   four: {
-//     "2": [2, 4, 7],
-//     "6Sus2": [2, 7, 9],
-//     "Minor 7th": [3, 7, 1],
-//     "Minor 6th ": [3, 7, 9],
-//     "Dimnished 7th": [3, 6, 9],
-//     "Minor-Major 7th": [3, 7, 11],
-//     "m7b5": [3, 6, 10], // (Minor 7th flat 5th)
-//     "Major 6th": [4, 7, 9],
-//     "7": [4, 7, 10],
-//     "Major 7th ": [4, 7, 11],
-//     "Dominant 7th": [4, 7, 1],
-//     "7b5 (7th flat 5th)": [4, 6, 10],
-//     "7#5 (7th sharp 5th)": [4, 8, 10]
-//   },
-//   five: {
-//     "Major 6-9th": [4, 7, 9, 2],
-//     "Major 9th": [4, 7, 11, 2],
-//     "Minor 9th": [3, 7, 1, 2],
-//     "Dominant 9th": [4, 7, 1, 2],
-//   },
-//   six: {
-//     "Major 11th": [4, 7, 11, 2, 5],
-//     "Minor 11th": [3, 7, 1, 2, 5],
-//     "Dominant 11": [4, 7, 1, 2, 5],
-//     "Major 13th": [3, 7, 1, 2, 5],
-//     "Minor 13th": [3, 7, 1, 2, 5]
-//   },
-//   seven: {
-//     "Major 13th": [4, 7, 11, 2, 5, 9],
-//     "Minor 13th": [3, 7, 1, 2, 5, 9],
-//     "Dominant 13th": [4, 7, 1, 2, 5, 9],
-//   },
-// };
-
 //root is omited
-const stackedIntervals = {
+const intervals = {
   2: {
     "perfect unison": 0,
     "minor 2nd": 1,
@@ -169,34 +110,34 @@ const stackedIntervals = {
 };
 
 
-const chordArr = [
-  { chordName: "Maj", notes: ['C', 'E', 'G'] },
-  { chordName: "m", notes: ['C', 'Eb', 'G'] },
-  { chordName: "Dim", notes: ['C', 'Eb', 'Gb'] },
-  { chordName: "Sus2", notes: ['C', 'D', 'G'] },
-  { chordName: "Sus4", notes: ['C', 'F', 'G'] },
-  { chordName: "Aug", notes: ['C', 'E', 'G#'] },
-  { chordName: "Maj6", notes: ['C', 'E', 'G', 'A'] },
-  { chordName: "m6", notes: ['C', 'Eb', 'G', 'A'] },
-  { chordName: "Dom7", notes: ['C', 'E', 'G', 'Bb'] },
-  { chordName: "mMaj7", notes: ['C', 'Eb', 'G', 'B'] },
-  { chordName: "7", notes: ['C', 'E', 'G', 'Bb'] },
-  { chordName: "Dom9", notes: ['C', 'E', 'G', 'Bb', 'D'] },
-  { chordName: "m7", notes: ['C', 'Eb', 'G', 'Bb'] },
-  { chordName: "Maj9", notes: ['C', 'E', 'G', 'B', 'D'] },
-  { chordName: "Min9", notes: ['C', 'Eb', 'G', 'Bb', 'D'] },
-  { chordName: "7#5", notes: ['C', 'E', 'G#', 'Bb'] },
-  { chordName: "7b5", notes: ['C', 'E', 'Gb', 'Bb'] },
-  { chordName: "Maj6/9", notes: ['C', 'E', 'G', 'A', 'D'] },
-  { chordName: "Min11", notes: ['C', 'Eb', 'G', 'Bb', 'D', 'F'] },
-  { chordName: "Dom11", notes: ['C', 'E', 'G', 'Bb', 'D', 'F'] },
-  { chordName: "Maj11", notes: ['C', 'E', 'G', 'B', 'D', 'F'] },
-  { chordName: "Min13", notes: ['C', 'Eb', 'G', 'Bb', 'D', 'F', 'A'] },
-  { chordName: "Dom13", notes: ['C', 'E', 'G', 'Bb', 'D', 'F', 'A'] },
-  { chordName: "Maj13", notes: ['C', 'E', 'G', 'B', 'D', 'F', 'A'] },
+const chords = [
+  { name: "Maj", notes: ['C', 'E', 'G'] },
+  { name: "m", notes: ['C', 'Eb', 'G'] },
+  { name: "Dim", notes: ['C', 'Eb', 'Gb'] },
+  { name: "Sus2", notes: ['C', 'D', 'G'] },
+  { name: "Sus4", notes: ['C', 'F', 'G'] },
+  { name: "Aug", notes: ['C', 'E', 'G#'] },
+  { name: "Maj6", notes: ['C', 'E', 'G', 'A'] },
+  { name: "m6", notes: ['C', 'Eb', 'G', 'A'] },
+  { name: "Dom7", notes: ['C', 'E', 'G', 'Bb'] },
+  { name: "mMaj7", notes: ['C', 'Eb', 'G', 'B'] },
+  { name: "7", notes: ['C', 'E', 'G', 'Bb'] },
+  { name: "Dom9", notes: ['C', 'E', 'G', 'Bb', 'D'] },
+  { name: "m7", notes: ['C', 'Eb', 'G', 'Bb'] },
+  { name: "Maj9", notes: ['C', 'E', 'G', 'B', 'D'] },
+  { name: "Min9", notes: ['C', 'Eb', 'G', 'Bb', 'D'] },
+  { name: "7#5", notes: ['C', 'E', 'G#', 'Bb'] },
+  { name: "7b5", notes: ['C', 'E', 'Gb', 'Bb'] },
+  { name: "Maj6/9", notes: ['C', 'E', 'G', 'A', 'D'] },
+  { name: "Min11", notes: ['C', 'Eb', 'G', 'Bb', 'D', 'F'] },
+  { name: "Dom11", notes: ['C', 'E', 'G', 'Bb', 'D', 'F'] },
+  { name: "Maj11", notes: ['C', 'E', 'G', 'B', 'D', 'F'] },
+  { name: "Min13", notes: ['C', 'Eb', 'G', 'Bb', 'D', 'F', 'A'] },
+  { name: "Dom13", notes: ['C', 'E', 'G', 'Bb', 'D', 'F', 'A'] },
+  { name: "Maj13", notes: ['C', 'E', 'G', 'B', 'D', 'F', 'A'] },
 ];
 
 
 
-export { notes, stackedIntervals, chordArr };
+export { notes, intervals, chords };
 

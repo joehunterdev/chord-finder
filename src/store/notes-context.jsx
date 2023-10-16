@@ -30,7 +30,7 @@ const notesReducer = (state, action) => {
           obj.octave === action.octave ? { ...obj, notesInput: updatedNotesInput } : obj
         );
       }
-      return state; //return new state
+      return state; //return new state 
     }
 
     case "keyUp": {
