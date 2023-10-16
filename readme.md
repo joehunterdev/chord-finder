@@ -7,12 +7,13 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
 ### V2
 
 - Features:
-  - 
+
+  -
   - Piano GUI:
   - [x] Do active notes
   - [x] markup css
   - [x] 12 Note input
-  - [ ] Remove cursor from key its annoying
+  - [] Remove cursor from key its annoying
   - [x] Black note
   - [x] White note
   - [x] friendly note name in class not C#
@@ -25,14 +26,19 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
       - [x] Max Keys
       - [x] Key layout x2 (octaves)
       - [x] Fix key press logic on and off
-      - [ ] reset feature
+      - [ ] Reset feature
       - [x] interval name
+      - [ ] Formula using diatonic scale 1 3 5
 
   - ChordName Components
-    - [x] Jest Test and config for all chord types
 
+    - [x] Jest Test and config for all chord types
+    - [] Handle no chord in jsx
   - UI
-      - [ ] Create a card component
+
+    - [ ] Create a card component
+    - [ ] Make keyboard 2oct responsive
+      
 
   - Context:
 
@@ -49,19 +55,23 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
       - Simple Chords
       - [x] Output root
       - Major min 7th dims etc
-      - Inversions 
+      - Inversions
         - any simple chords can be inverted
         - library js theory plugin
         - Decide on whether to keep 0 - 7 Tone logic or Stacked Interval logic
-        - [x] normlize naming convention 
+        - [x] normlize naming convention
       - Advanced chords
       - [x] Look for alts to derive note id the "flat" Eb prblem.
       - ~~ [] Change this to functional component ?? ~~
       - [x] Needs extra octave
-      - [x] simplify switch getChord? make recursive 
+      - [x] simplify switch getChord? make recursive
       - [x] Do stacked intervals
       - Recheck no chordname found output
-      - [ ] Add inversion logic
+      - [x] Add inversion logic
+        - [ ] Logic on when to apply inversion to chord name
+        - [x] Hide undefined output
+        - [x] Dont show first inversion
+        - [x] Fix inversions order/degree output
       - _Compromise either reducer complexity or getChord complexity_
       - [x] Test cases
         - ~~major~~
@@ -79,27 +89,32 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
           - [x] Logic for counting up to notes on next octave (+12)
         - [x] sus4
         - [x] 2
-
+        - [x] Write test case for an inversion
+          - Add logic accordingly
+            - invert the input 2 times run getChord
+            -  Check if a chord has been found or not
+            -  Output inversion with the lowest degree
   - Reproduce audio:
-    - [] Play sound
+    - [ ] Play sound
 
- BUGFIXES:
-  - [x]  8 Key press crashes
-  - [x] Simplify array handling from constants
-  - [x] Fix piano padding layout
-  - [x] Decide on Component Structure & naming
-  - [x] Install Bootstrap
-  - [x] Install classnames
-  - [x] UI Color (make this more highlighted on black key)
-  - [x] Fix padding default issue @normalize using import and priority swith
-  - [x] Chord name needs to run every time a note is added or removed
-  - [x] Keyup doesnt retrigger chord name
-  - [x] `ol, ul { /* padding-left: 2rem; */}` layout issue
-  - [x] Migrate to React Vite
-    - Investigate react-app to vite
-  - [x] Setup proper Tests for chord names
-  - [ ] Fix redundant code in css `.black:active {`
-  - [x] Output no chord found
+BUGFIXES:
+
+- [x] 8 Key press crashes
+- [x] Simplify array handling from constants
+- [x] Fix piano padding layout
+- [x] Decide on Component Structure & naming
+- [x] Install Bootstrap
+- [x] Install classnames
+- [x] UI Color (make this more highlighted on black key)
+- [x] Fix padding default issue @normalize using import and priority swith
+- [x] Chord name needs to run every time a note is added or removed
+- [x] Keyup doesnt retrigger chord name
+- [x] `ol, ul { /* padding-left: 2rem; */}` layout issue
+- [x] Migrate to React Vite
+  - Investigate react-app to vite
+- [x] Setup proper Tests for chord names
+- [] Fix redundant code in css `.black:active {`
+- [x] Output no chord found
 
 - Deployment
   - Build for prod
@@ -119,19 +134,18 @@ Component Tree:
 
 Analysis:
 
-- Can getChord switch statement be imporved ?
-  - [x] Recursion 
-  - [ ] Typescript ?
+- Can getChord  imporved ?
+
+  - [x] Recursion
 
 - Where to handle chord name ? In context ? or directly in component
   - Directly in component to levarage state updates
 - How we can we optimize events and state updates
-- State and leveraging this in Harmony component
-- let res = []; ? is redundant ?
-- The sort on notes could cause issues when coming to do inversions
+  - The sort on notes could cause issues when coming to do inversions
 - How to handle inversion ?
-- A good  
+- Env variables ?
 - Classes = dna
+-
 
 - Treats:
   - When adding an extra octave will need to add a new note object in context
@@ -144,17 +158,14 @@ Analysis:
 
 Requirements:
 
-- Play sound
 - Chord name to key output
 - Scale display
-- Key Select
-- refactor to vite or next app
-- reproduce a chord progression visualy
-- Change active color
-- Optimization
+- [] chord progression component
+- Changeable active color
+- [ ] Optimization
 - [] Handle inversion
-- [] Test cases
 - [] Docs / Diagram
+- [ ] Typescript ?
 
 ---
 
@@ -189,7 +200,7 @@ the sharp (♯), the flat (♭) and the natural (♮).
 
 Scenario: - C Eb e () app should try to find the chord name by swithing bass note
 
-    This chord is Eb6sus2\C (Borader chord finding by switching bass note)
+    This chord is Eb6sus2\C (Broader chord finding by switching bass note)
 
     sus2 and sus4 chords.
 
@@ -210,17 +221,37 @@ Scenario: - C Eb e () app should try to find the chord name by swithing bass not
     An octave ! despite the way it looks c1 still goes to b1 (even tho these are not in order)
 
 Inversions:
-  - x3 Lets only invert the 3rd Fifth and 7th
-  - Need to derive the 3rd 5th and 7th from the chord name (presumably break all tones into a major scale and count up from the root note)
-  - Correct ! chords are derived from scales
-  - Run Jest test cases
 
-  - Where to handle inversion ? 
-  - Potentially now we will have multiple chord names
-  - up to now we dont have a way to derive a chord from a scale
+- x3 Lets only invert the 3rd Fifth and 7th
+- Need to derive the 3rd 5th and 7th from the chord name (presumably break all tones into a major scale and count up from the root note)
+- Correct ! chords are derived from scales
+- Run Jest test cases
+
+- Where to handle inversion ?
+- Potentially now we will have multiple chord names
+- up to now we dont have a way to derive a chord from a scale
+
+
+
+
+| Triad | Root Pos. | Major inverions |
+|-------|-----------|-----------------|
+| Cmaj | C  E  G | E  G  C | G  C  E |
+| C#maj | C#  E#  G# | E#  G#  C# | G#  C#  E# |
+| Dmaj | D  F#  A | F#  A  D | A  D  F# |
+| Ebmaj | Eb  G  Bb | G  Eb Bb | Bb  Eb  G |
+| Emaj | E  G#  B | G#  E  B | B  E  G# |
+| Fmaj | F  A  C | A  C  F | C  F  A |
+| F#maj | F#  A#  C# | A#  C#  F# | C#  F#  A# |
+| Gmaj | G  B  D | B  D  G | D  G  B |
+| Abmaj | Ab  C  Eb | C  Eb  Ab | Eb  Ab  C |
+| Amaj | A  C#  E | C#  E  A | E  A  C# |
+| Bbmaj | Bb  D  F | D  F  Bb | F  Bb  D |
+| Bmaj | B  D#  F# | D#  F#  B | F#  B  D# | 
 
 Logic:
-  - Have
+
+- Have
 
 #### Programmer Notes
 

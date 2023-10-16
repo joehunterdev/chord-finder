@@ -3,7 +3,7 @@ import { notes, intervals } from '../Constants/constants'
 
 class Harmony extends Component {
 
-  //find note id using sharp or fla
+  //find note id using sharp or flat
   getNoteNum = (note_name) => {
     let res = notes.find((note) => { return (note.name === note_name || note.alt === note_name) }); //indexOf ? //|| note.alt === note_name
     if (res) return res.id;
@@ -18,7 +18,7 @@ class Harmony extends Component {
     if (second < first) {
       second += 12;
     }
-    
+
     return Math.abs(first - second);
   }
 
@@ -31,12 +31,6 @@ class Harmony extends Component {
       userIntervals.push(this.getInterval([input[i], input[i + 1]]));
     }
     return userIntervals
-  }
-
-  getDiatonicIntervals(input) {
-    //diatonic intervals
-
-
   }
 
   getIntervalNames(input) {
@@ -66,17 +60,45 @@ class Harmony extends Component {
     );
   }
 
+  // invert input to nth degree
+  invertInput(input, degree) {
+
+    // input = input.sort();
+    // input[degree] - 12
+
+    let invertedInput = input.slice(degree);
+    invertedInput = invertedInput.concat(input.slice(0, degree));
+    return invertedInput;
+
+  }
+
+  getChordInversion(input) {
+
+    for (let i = -2; i < input.length; i++) {
+      if (i === 0) continue;
+      let invertedInput = this.invertInput(input, i);
+      let chord = this.getChord(invertedInput);
+      if (chord.name !== "") {
+        return {
+          name: chord.name + " (" + Math
+            .abs(i) + " inversion)", intervals: chord.intervals
+        };
+      }
+    }
+
+  }
+
+
   //get chord name and numerical intervals
   getChord(input) {
 
-    let chordName = "no chord found";
+    let chordName = "";
     let userIntervals = this.getIntervals(input);
 
-    if (userIntervals.length === 0) return chordName
+    if (userIntervals.length === 0) return { name: chordName, intervals: userIntervals }
 
     // Cannot convert undefined or null to object
-
-    Object.keys(intervals[parseInt(input.length)]).forEach((key, val) => {
+    Object.keys(intervals[parseInt(input.length)]).forEach((key) => {
 
       if (this.arrayEquals(intervals[parseInt(input.length)][key], userIntervals)) {
         chordName = input[0] + key;
@@ -89,6 +111,12 @@ class Harmony extends Component {
 
   }
 
+  // getChord(input) {
+  //   const userIntervals = this.getIntervals(input);
+  //   const chordName = Object.keys(intervals[parseInt(input.length)])
+  //     .find(key => this.arrayEquals(intervals[parseInt(input.length)][key], userIntervals)) || '';
+  //   return { name: chordName ? input[0] + chordName : '', intervals: userIntervals };
+  // }
 
 
 }
