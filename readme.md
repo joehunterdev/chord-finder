@@ -45,6 +45,9 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
 
     - [ ] Create a card component
     - [ ] keyboard for all screens
+    - [ ] Redo wireframe grid in bootstrap
+      - Currently too much padding
+    - [ ] Rotate keyboard
     - [ ] Name overlay      
 
   - Context:
@@ -79,6 +82,10 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
         - [x] Hide undefined output
         - [x] Dont show first inversion
         - [x] Fix inversions order/degree output
+        - Run Jest test cases
+        - Where to handle inversion ?
+        - Potentially now we will have multiple chord names
+        - up to now we dont have a way to derive a chord from a scale
       - _Compromise either reducer complexity or getChord complexity_
       - [x] Test cases
         - ~~major~~
@@ -92,7 +99,7 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
         - ~~13th (major/minor)~~
         - ~~sixth (major/minor)~~
         - ~~sus2~~
-        - [x] Write Amin chord for two octave test
+        -[x] Write Amin chord for two octave test
           - [x] Logic for counting up to notes on next octave (+12)
         - [x] sus4
         - [x] 2
@@ -101,10 +108,10 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
             - invert the input 2 times run getChord
             -  Check if a chord has been found or not
             -  Output inversion with the lowest degree
-  - [ ] Format these notes
-  - [ ] Rename react chord finder to something different
+        - [ ] Format these notes
+        - [] Rename react chord finder to something different
   - Reproduce audio:
-    - [ ] Play sound
+    - [x] Play sound
       - [x] How to reproduce in browser
       - [x] How to reproduce in react
         - [x] Hello world player with howler and require
@@ -112,6 +119,7 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
             - [x] How to initiate on clicks
               - ()[https://medium.com/swlh/getting-started-with-howler-js-in-react-67d3a348854b]
               - https://github.com/emilpee/online-piano/blob/main/src/components/Piano/Piano.tsx
+
       - [x] Install Howler
       - [x] look at integration
       - [x] Setup core tested integration with note
@@ -166,7 +174,7 @@ Component Tree:
 ```
 ---
 
-# Analysis:
+#### Analysis:
 
 - Can getChord  imporved ?
 
@@ -187,7 +195,7 @@ Component Tree:
   - Smells like useEffect and useRef could be levaraged to get around this setState issue
   - `interface HarmonyProps {` ?
   --- 
-## Audio Player Integration   
+#### Audio Player Integration   
 A project to better understand audio player integration and its implementation in react
 
 - [x] Install vite
@@ -228,10 +236,11 @@ How to map the laptop keys to piano notes.
 Map the audio with key press.
 How to render the piano keyboard in react.
 
-## Takeaways
+#### Takeaways
 utils folder with 
 single functions for export not a class
 add start scripts to vite for npm start
+
 ---
 
 ### V3
@@ -253,69 +262,26 @@ Requirements:
 
 #### Music Theory
 
-    Semitones	Interval	Abbreviation	Example
-
-    0	Unison	PP or P1	C – C
-    1	Minor 2nd	m2	C – Db
-    2	Major 2nd	M2	C – D
-    3	Augmented 2nd	A2	C – D#
-    3	Minor 3rd	m3	C – Eb
-    4	Major 3rd	M3	C – E
-    4	Diminished 4th	D4	C – Fb
-    5	Perfect 4th	P4	C – F
-    6	Augmented 4th	A4	C – F#
-    6	Diminished 5th	D5	C – Gb
-    7	Perfect 5th	P5	C – G
-    8	Augmented 5th	A5	C – G#
-    8	Minor 6th	m6	C – Ab
-    9	Major 6th	M6	C – A
-
-    The 18 chord formulas: major, sus2, sus4, 5, maj7, maj6, minor, augmented, diminished, minor7, minor7♭5, dim7, dom7, minor7#5, maj7#5, maj7♭5, dom7#5, dom7♭5.
-
-    Seven or eight is typcially the max number of notes in a chord.
-
-    351 possible chord variations
-
-the sharp (♯), the flat (♭) and the natural (♮).
-
-Scenario: - C Eb e () app should try to find the chord name by swithing bass note
-
-    This chord is Eb6sus2\C (Broader chord finding by switching bass note)
-
-    sus2 and sus4 chords.
-
-    **consonants**:
-    pleasing or  sound.
-    **dissonant** sound:
-    jarring or
-
-    The pitch middle C is C4, which is useful to memorize.
-
-    The notes (C, C# or Db, D, D# or Eb, D, F, F# or Gb, G, G# or Ab, A# or Bb, B) are followed by an octave number. For example: C2, F#3, and Bb4. These may also be written in various publications as: C(2), F#(3), Bb(4), C[2], F#[3], Bb[4], or C2, F#3, and Bb4.
-
-    Goal:
-     minor, augmented, diminished, 8 types of 7th chords (7, maj7, m7, m(maj7), dim7, 7b5, 7#5, m7b5), ninth chords, eleventh chords, 13th chords, sixth chords, sus2 and sus4 chords.
-
-    The reason the keyboard is designed around the C major scale does not come from piano - it started with the organ. Organ builders discovered long ago that a pipe of 8 feet will give a note close to the pitch called C. This was a convenient place to start
-
-    An octave ! despite the way it looks c1 still goes to b1 (even tho these are not in order)
-
-Inversions:
-
-- x3 Lets only invert the 3rd Fifth and 7th
-- Need to derive the 3rd 5th and 7th from the chord name (presumably break all tones into a major scale and count up from the root note)
-- Correct ! chords are derived from scales
-- Run Jest test cases
-
-- Where to handle inversion ?
-- Potentially now we will have multiple chord names
-- up to now we dont have a way to derive a chord from a scale
+  | Semitones | Interval         | Abbreviation | Example |
+  | --------- | ---------------- | ------------ | ------- |
+  | 0         | Unison           | PP or P1     | C – C   |
+  | 1         | Minor 2nd        | m2           | C – Db  |
+  | 2         | Major 2nd        | M2           | C – D   |
+  | 3         | Augmented 2nd    | A2           | C – D#  |
+  | 3         | Minor 3rd        | m3           | C – Eb  |
+  | 4         | Major 3rd        | M3           | C – E   |
+  | 4         | Diminished 4th   | D4           | C – Fb  |
+  | 5         | Perfect 4th      | P4           | C – F   |
+  | 6         | Augmented 4th    | A4           | C – F#  |
+  | 6         | Diminished 5th   | D5           | C – Gb  |
+  | 7         | Perfect 5th      | P5           | C – G   |
+  | 8         | Augmented 5th    | A5           | C – G#  |
+  | 8         | Minor 6th        | m6           | C – Ab  |
+  | 9         | Major 6th        | M6           | C – A   |
 
 
-
-
-| Triad | Root Pos. | Major inverions |
-|-------|-----------|-----------------|
+| Triad | Root Pos. | 1st inverion | 2nd Inversion  |
+|-------|-----------|-----------------|-|
 | Cmaj | C  E  G | E  G  C | G  C  E |
 | C#maj | C#  E#  G# | E#  G#  C# | G#  C#  E# |
 | Dmaj | D  F#  A | F#  A  D | A  D  F# |
@@ -329,11 +295,55 @@ Inversions:
 | Bbmaj | Bb  D  F | D  F  Bb | F  Bb  D |
 | Bmaj | B  D#  F# | D#  F#  B | F#  B  D# | 
 
-Logic:
+  #### The 18 chord formulas:
+  - major
+  - sus2
+  - sus4
+  - 5
+  - maj7
+  - maj6
+  - minor
+  - augmented
+  - diminished
+  - minor7
+  - minor7♭5
+  - dim7
+  - dom7
+  - minor7#5
+  - maj7#5
+  - maj7♭5
+  - dom7#5
+  - dom7♭5
 
-- Have
+#### More Info
 
-#### Programmer Notes
+-Seven or eight is typically the max number of notes in a chord.
+-351 possible chord variations
+-The sharp (♯), the flat (♭) and the natural (♮).
+-Scenario: - C Eb e () app should try to find the chord name by switching bass note
+-This chord is Eb6sus2\C (Broader chord finding by switching bass note)
+Sus2 and sus4 chords.
 
-- [Enums !] https://www.sohamkamani.com/javascript/enums/?utm_content=cmp-true)
-- https://codepen.io/zastrow/pen/kxdYdk - Philip Zastrow @zastrow
+**Consonants**:
+Pleasing or sound.
+
+**Dissonant** sound:
+Jarring or
+
+The pitch middle C is C4, which is useful to memorize.
+
+The notes (C, C# or Db, D, D# or Eb, D, F, F# or Gb, G, G# or Ab, A# or Bb, B) are followed by an octave number. For example: C2, F#3, and Bb4. These may also be written in various publications as: C(2), F#(3), Bb(4), C[2], F#[3], Bb[4], or C2, F#3, and Bb4.
+
+The reason the keyboard is designed around the C major scale does not come from piano - it started with the organ. Organ builders discovered long ago that a pipe of 8 feet will give a note close to the pitch called C. This was a convenient place to start
+
+An octave C4 despite the way it looks c1 still goes to b1 (even tho these are not in order)
+
+#### Inversions:
+
+- Need to derive the 3rd 5th and 7th from the chord name (presumably break all tones into a major scale and count up from the root note)
+- chords are derived from scales
+
+
+
+
+
