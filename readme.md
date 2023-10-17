@@ -8,7 +8,7 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
 
 - Features:
 
-  -
+
   - Piano GUI:
   - [x] Do active notes
   - [x] markup css
@@ -38,12 +38,12 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
     - [x] Handle no chord in jsx
 
   - UX
-    - [ ] Longpress to hold down note
+    - [ ] Longpress to hold down note / touch 
     
   - UI
 
     - [ ] Create a card component
-    - [ ]  keyboard 2oct responsive for all screens
+    - [ ] keyboard for all screens
       
 
   - Context:
@@ -100,11 +100,17 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
             - invert the input 2 times run getChord
    no         -  Check if a chord has been found or not
             -  Output inversion with the lowest degree
+  - [ ] Format these notes
+  - [ ] Rename react chord finder to something different
   - Reproduce audio:
     - [ ] Play sound
       - [x] How to reproduce in browser
-      - [x] Do hello world soundfont test
-
+      - [x] How to reproduce in react
+      - [] Install Howler
+      - [] look at integration
+      - [ ] Setup core tested integration
+      - [ ] Integarate fully
+      - [] look at optimization
 
 BUGFIXES:
 
