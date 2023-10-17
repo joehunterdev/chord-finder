@@ -1,20 +1,25 @@
-import React, { Component, Fragment } from 'react'
-import ReactHowler from 'react-howler'
-import soundUrl from '../audio/Piano/key01.mp3'
+import { useState } from 'react';
+import key01 from '../audio/Piano/key01.mp3'
+import ReactHowler from 'react-howler';
 
-class PlayerTest extends Component {
-  // This sound file may not work due to cross-origin setting
-  render () {
-    return (
-      <Fragment>
-        <h1>React Howler</h1>
-      <ReactHowler
-        src={soundUrl}
-        playing={true}
-      />
-      </Fragment>
-    )
+const PlayerTest = () => {
+
+  const [playing, setPlaying] = useState(false);
+
+  const handlePlay = () => {
+    setPlaying((prevStatus) => !prevStatus )
   }
+
+  return (
+    <>
+      <h1>React Howler</h1>
+      <button onClick={handlePlay}>{playing ? "Stop" : "Start"} Sound</button>
+      <ReactHowler
+        src={key01}
+        playing={playing}
+      /> 
+    </>
+  );
 }
 
-export default PlayerTest
+export default PlayerTest;

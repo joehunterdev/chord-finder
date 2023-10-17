@@ -110,6 +110,7 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
           - `const Sounds = new Howl({    src: ["/sound.mp3"]})`
             - [] How to initiate on clicks
               - ()[https://medium.com/swlh/getting-started-with-howler-js-in-react-67d3a348854b]
+              - https://github.com/emilpee/online-piano/blob/main/src/components/Piano/Piano.tsx
       - [x] Install Howler
       - [ ] look at integration
       - [ ] Setup core tested integration with note
@@ -138,6 +139,7 @@ BUGFIXES:
 - [x] Setup proper Tests for chord names
 - [] Fix redundant code in css `.black:active {`
 - [x] Output no chord found
+- 
 
 - Deployment
   - Build for prod
