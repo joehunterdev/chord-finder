@@ -8,7 +8,6 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
 
 - Features:
 
-
   - Piano GUI:
   - [x] Do active notes
   - [x] markup css
@@ -17,7 +16,6 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
   - [x] Black note
   - [x] White note
   - [x] friendly note name in class not C#
-
 
   - Piano Component Controls:
 
@@ -112,14 +110,14 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
               - ()[https://medium.com/swlh/getting-started-with-howler-js-in-react-67d3a348854b]
               - https://github.com/emilpee/online-piano/blob/main/src/components/Piano/Piano.tsx
       - [x] Install Howler
-      - [ ] look at integration
-      - [ ] Setup core tested integration with note
-      - [ ] Integarate fully
-      - [ ] Optimization
-      - [ ] Where to store sound files ? Public ¿?
+      - [x] look at integration
+      - [x] Setup core tested integration with note
+      - [x] Integarate fully
+      - [ ] Optimization!
+      - [x] Where to store sound files ? Public ¿?
         - could be public but may cause performance issues go with src
-      - [ ] Preload
-        - Unlikely a requirement using react wrapper
+      - [x] Preload
+        - [x] In Constants Unlikely a requirement using react wrapper
 
 BUGFIXES:
 
@@ -189,7 +187,7 @@ A project to better understand audio player integration and its implementation i
 - [x] Install vite
 - [x] Soundfont player install
 - [x] Install necessary files 
-    - [ ] Maintain notes
+    - [x] Maintain notes
 - [x] Hello world test
 - [x] Full compnent test
 - [ ] Create repo
@@ -197,16 +195,16 @@ A project to better understand audio player integration and its implementation i
     - [] How is sound triggered specifically
     - [] How does m.vargas handle his audio
         - Using Howl.js [https://github.com/ManuelVargas1251/Chord-Finder/blob/master/src/js/sound.js]
-    -  [ ] What are resources materials like for topp 5 audio js plugins
-        - [ ] Howl 
+    -  [x] What are resources materials like for topp 5 audio js plugins
+        - [x] Howl 
             - Free 
             - has dedicated wrapper ()[https://github.com/ManuelVargas1251/Chord-Finder/blob/master/src/js/sound.js]
             - More resources: https://khoanguyen.me/react-howler/
             - https://github.com/goldfire/howler.js#documentation
             -Web Audio API and falls back to HTML5 Audio
-          [ ] tone.js 
+          [ x] tone.js 
             - Free
-    - [ ] Soundfont 
+    - [x] Soundfont 
         - has adsr 
         - library of sounds
     - [ ] Performance
