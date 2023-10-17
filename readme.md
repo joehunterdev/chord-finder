@@ -1,10 +1,10 @@
-## Chord Finder
+# Chord Finder
 
-Pure React chord name output from virtual piano keys. With a focus on ui ux display across multiple devices,Specifically mobile
+Pure React chord name output from virtual piano keys. With a focus on ui ux display across multiple devices, Specifically mobile
 
 ---
 
-### V2
+## V2
 
 - Features:
 
@@ -18,6 +18,7 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
   - [x] White note
   - [x] friendly note name in class not C#
 
+
   - Piano Component Controls:
 
     - Note click handler
@@ -27,17 +28,22 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
       - [x] Key layout x2 (octaves)
       - [x] Fix key press logic on and off
       - [ ] Reset feature
+      - [] Error Boundries
       - [x] interval name
       - [ ] Formula using diatonic scale 1 3 5
 
   - ChordName Components
 
     - [x] Jest Test and config for all chord types
-    - [] Handle no chord in jsx
+    - [x] Handle no chord in jsx
+
+  - UX
+    - [ ] Longpress to hold down note
+    
   - UI
 
     - [ ] Create a card component
-    - [ ] Make keyboard 2oct responsive
+    - [ ]  keyboard 2oct responsive for all screens
       
 
   - Context:
@@ -92,10 +98,13 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
         - [x] Write test case for an inversion
           - Add logic accordingly
             - invert the input 2 times run getChord
-            -  Check if a chord has been found or not
+   no         -  Check if a chord has been found or not
             -  Output inversion with the lowest degree
   - Reproduce audio:
     - [ ] Play sound
+      - [x] How to reproduce in browser
+      - [x] Do hello world soundfont test
+
 
 BUGFIXES:
 
@@ -119,7 +128,10 @@ BUGFIXES:
 - Deployment
   - Build for prod
   - Github actions may be required
+  - [ ] How will these dependancies be handled when hosted on github pages / website
 
+- Config:
+  - Re do config and reinstall
 Component Tree:
 
 ```
@@ -130,9 +142,11 @@ Component Tree:
                 onClick handlers
                 state setNotes
                 -> Key
+                
 ```
+---
 
-Analysis:
+# Analysis:
 
 - Can getChord  imporved ?
 
@@ -145,13 +159,63 @@ Analysis:
 - How to handle inversion ?
 - Env variables ?
 - Classes = dna
--
+
+- ()[https://www.npmjs.com/package/soundfont-player] 
 
 - Treats:
   - When adding an extra octave will need to add a new note object in context
   - Smells like useEffect and useRef could be levaraged to get around this setState issue
   - `interface HarmonyProps {` ?
+  --- 
+## Audio Player Integration   
+A project to better understand audio player integration and its implementation in react
 
+- [x] Install vite
+- [x] Soundfont player install
+- [x] Install necessary files 
+    - [ ] Maintain notes
+- [x] Hello world test
+- [x] Full compnent test
+- [ ] Create repo
+- [ ] Analysis 
+    - [] How is sound triggered specifically
+    - [] How does m.vargas handle his audio
+        - Using Howl.js [https://github.com/ManuelVargas1251/Chord-Finder/blob/master/src/js/sound.js]
+    -  [ ] What are resources materials like for topp 5 audio js plugins
+        - [ ] Howl 
+            - Free 
+            - has dedicated wrapper ()[https://github.com/ManuelVargas1251/Chord-Finder/blob/master/src/js/sound.js]
+            - More resources: https://khoanguyen.me/react-howler/
+            - https://github.com/goldfire/howler.js#documentation
+          [ ] tone.js 
+            - Free
+    - [ ] Soundfont 
+        - has adsr 
+        - library of sounds
+    - [ ] Performance
+    - [ ] Potential for integration
+    - [ ] Oportunites: If this has lots of instruments it could be usefull indeed
+    - [ ] Threats in current integration
+    - [ ] Essentials to take from here to use in my project
+    - [ ] A diagram might help
+        - [ ] Events actions 
+        - [ ]  Context `export default window.AudioContext || window.webkitAudioContext;`
+
+    - [ ]  Include this file project
+
+    - Treats:
+        - AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page
+
+        
+
+How to map the laptop keys to piano notes.
+Map the audio with key press.
+How to render the piano keyboard in react.
+
+## Takeaways
+utils folder with 
+single functions for export not a class
+add start scripts to vite for npm start
 ---
 
 ### V3
