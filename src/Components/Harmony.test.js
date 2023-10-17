@@ -76,7 +76,27 @@ describe('Harmony', () => {
     });
   });
 
-
+  // describe('PlayerTest', () => {
+  //   it('should render the component', () => {
+  //     render(<PlayerTest />);
+  //     const heading = screen.getByRole('heading', { name: /react howler/i });
+  //     const button = screen.getByRole('button', { name: /start sound/i });
+  //     const audio = screen.getByRole('button', { name: /start sound/i });
+  //     expect(heading).toBeInTheDocument();
+  //     expect(button).toBeInTheDocument();
+  //     expect(audio).toBeInTheDocument();
+  //   });
+  
+  //   it('should play and stop the audio when the button is clicked', () => {
+  //     render(<PlayerTest />);
+  //     const button = screen.getByRole('button', { name: /start sound/i });
+  //     const audio = screen.getByRole('button', { name: /start sound/i });
+  //     fireEvent.click(button);
+  //     expect(audio).toHaveAttribute('playing', 'true');
+  //     fireEvent.click(button);
+  //     expect(audio).toHaveAttribute('playing', 'false');
+  //   });
+  // });
 
 
 

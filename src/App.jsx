@@ -4,8 +4,6 @@ import Piano from "./Components/Instruments/Piano";
 import Footer from "./Components/Layout/Footer";
 import { StrictMode } from "react";
 import ChordName from './Components/ChordName'
-// import PlayerTest from './Components/PlayerTest'
-// import { Button } from "react-bootstrap";
 import { NotesProvider } from "./store/notes-context";
 import { Container } from "react-bootstrap";
 function App() {
@@ -17,7 +15,6 @@ function App() {
           <ChordName></ChordName>
           <Piano></Piano>
          </NotesProvider>
-         {/* <PlayerTest></PlayerTest> */}
         <Footer />
       </Container>
     </StrictMode>
