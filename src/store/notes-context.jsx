@@ -2,10 +2,8 @@ import React, { createContext, useReducer, memo } from "react";
 import { notes } from "../Constants/constants";
 
 const initialState = [
-  { octave: 3, notesInput: [] },
   { octave: 4, notesInput: [] },
   { octave: 5, notesInput: [] },
-  { octave: 6, notesInput: [] },
 ];
 
 export const NotesContext = createContext(initialState);
