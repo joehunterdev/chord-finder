@@ -106,11 +106,19 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
     - [ ] Play sound
       - [x] How to reproduce in browser
       - [x] How to reproduce in react
-      - [] Install Howler
-      - [] look at integration
-      - [ ] Setup core tested integration
+        - [x] Hello world player with howler and require
+          - `const Sounds = new Howl({    src: ["/sound.mp3"]})`
+            - [] How to initiate on clicks
+              - ()[https://medium.com/swlh/getting-started-with-howler-js-in-react-67d3a348854b]
+      - [x] Install Howler
+      - [ ] look at integration
+      - [ ] Setup core tested integration with note
       - [ ] Integarate fully
-      - [] look at optimization
+      - [ ] Optimization
+      - [ ] Where to store sound files ? Public ¿?
+        - could be public but may cause performance issues go with src
+      - [ ] Preload
+        - Unlikely a requirement using react wrapper
 
 BUGFIXES:
 
@@ -193,6 +201,7 @@ A project to better understand audio player integration and its implementation i
             - has dedicated wrapper ()[https://github.com/ManuelVargas1251/Chord-Finder/blob/master/src/js/sound.js]
             - More resources: https://khoanguyen.me/react-howler/
             - https://github.com/goldfire/howler.js#documentation
+            -Web Audio API and falls back to HTML5 Audio
           [ ] tone.js 
             - Free
     - [ ] Soundfont 

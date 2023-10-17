@@ -12,6 +12,7 @@
     "react": "^18.0.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.0.0",
+    "react-howler": "^5.2.0",
     "vite": "^4.4.11",
     "vite-plugin-svgr": "^4.1.0",
     "vite-tsconfig-paths": "^4.2.1",
