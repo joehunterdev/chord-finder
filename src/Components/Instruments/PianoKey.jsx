@@ -41,7 +41,7 @@ const PianoKey = ({ id, name, alt, octave }) => {
   return (
     <li onClick={keyPressHandler} className={generateClassName()}>
       <ReactHowler src={[audioFiles[id]]} playing={playing} />
-    </li>
+   </li>
   );
 };
 

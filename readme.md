@@ -43,12 +43,12 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
     
   - UI
 
-    - [ ] Create a card component
+    - [x] Create a card component
     - [ ] keyboard for all screens
-    - [ ] Redo wireframe grid in bootstrap
+    - [x] Redo wireframe grid in bootstrap
       - Currently too much padding
-    - [ ] Rotate keyboard
-    - [ ] Name overlay      
+    - [x] Rotate keyboard
+    - [] Name overlay      
 
   - Context:
 
@@ -92,6 +92,7 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
         - ~~minor~~
         - ~~augmented~~
         - ~~diminished~~
+        - BUG: 11th 13th chords
         - 8 types of 7th
           - ([x]7, ~~maj7, m7, m(maj7),~~ [x]dim7, [x] 7b5, [x]7#5, [x]m7b5)
         - ~~ninth (major/minor)~~
@@ -125,6 +126,7 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
       - [x] Setup core tested integration with note
       - [x] Integarate fully
       - [ ] Optimization!
+      - [ ] BUG where not actually playing the ocrt
       - [x] Where to store sound files ? Public ¿?
       - [x] Play two ocaves
         - could be public but may cause performance issues go with src
