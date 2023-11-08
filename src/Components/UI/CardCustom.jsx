@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import './CardCustom.css'; 
 
 const CardCustom = ({ title, children }) => {
     return (

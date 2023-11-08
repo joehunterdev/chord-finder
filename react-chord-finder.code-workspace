@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"todo-tree.tree.scanMode": "open files",
+		"todo-tree.tree.showBadges": false,
+		"todo-tree.tree.showCountsInTree": true
+	}
+}

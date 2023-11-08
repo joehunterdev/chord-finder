@@ -19,17 +19,17 @@ const ChordInfo = () => {
             {inversions && inversions.name}
         </CardCustom>
       </Container>
-      <Container className="mb-2 mt-2 col-lg-2 col-sm-3">
+      <Container className="mb-2 mt-2 col-lg-2 col-sm-3 overflow-hidden">
         <CardCustom title="Notes">
             {notesInputs ?  notesInputs.join(" ") : "No input"}
         </CardCustom>
-      </Container>
+    </Container>
       {/* <Container className="mb-4 col-lg-3  col-sm-3">
         <CardCustom title="Intervals">
               {chordData.intervals && harmony.getIntervalNames(chordData.intervals).join(" - ")}
         </CardCustom>
       </Container> */}
-      <Container className="mb-2 mt-2 col-lg-3   col-sm-3">
+      <Container className="mb-2 mt-2 col-lg-3   col-sm-3 overflow-hidden">
           <CardCustom title="Formula">
               {!chordData.intervals ? "No Formula" : chordData.intervals.join(", ")}
         </CardCustom>

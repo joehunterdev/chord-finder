@@ -1,6 +1,6 @@
 
 import Header from "./Components/Layout/Header";
-import Piano from "./Components/Instruments/Piano";
+import Piano from "./Components/Piano";
 import Footer from "./Components/Layout/Footer";
 import { StrictMode } from "react";
 import { NotesProvider } from "./store/notes-context";

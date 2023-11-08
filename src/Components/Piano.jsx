@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import PianoKeys from "./PianoKeys";
+import PianoKeys from "./Instruments/PianoKeys";
 
 const Piano = () => {
   return (
