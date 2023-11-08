@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  base: '/',
-  plugins: [react()]
+  base: 'https://joehunter.dev/chord-finder/',
+  plugins: [react()],
 })
+
+git rm --cached vite.config.ts
