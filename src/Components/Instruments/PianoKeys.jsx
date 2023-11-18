@@ -1,15 +1,17 @@
-import React, { Children } from "react";
-import styles from "./PianoKeys.module.css";
-import { NotesContext } from "../../store/notes-context";
+import React from "react";
 import { notes } from "../../Constants/constants";
 import PianoKey from "./PianoKey";
+import styles from "./PianoKeys.module.scss";
 
 const PianoKeys = ({ amount, octave }) => {
   return (
-    <ul className="set">
+    // <div className={styles["piano-container"]}>
+
+    // </div>
+    <div className="keyboard">
       <PianoKeyList octave={octave} />
       <PianoKeyList octave={5} />
-    </ul>
+    </div>
   );
 };
 

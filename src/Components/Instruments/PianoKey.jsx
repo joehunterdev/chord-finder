@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import ReactHowler from "react-howler";
 import cx from "classnames";
-import styles from "./PianoKey.module.css";
+import styles from "./PianoKeys.module.scss";
 import { audioFiles } from "../../constants/audioFiles";
 import { NotesContext, NotesDispatchContext } from "../../store/notes-context";
 
@@ -21,8 +21,8 @@ const PianoKey = ({ id, name, alt, octave }) => {
     let activeClass = active ? styles.active : "";
 
     return alt
-      ? cx(styles.black, activeClass, styles[noteName])
-      : cx(styles.white, activeClass, styles[noteName]);
+      ? cx(styles.key,styles.black, activeClass, styles[noteName])
+      : cx(styles.key,styles.white, activeClass, styles[noteName]);
   };
 
   useEffect(() => {
@@ -39,9 +39,9 @@ const PianoKey = ({ id, name, alt, octave }) => {
   };
 
   return (
-    <li onClick={keyPressHandler} className={generateClassName()}>
+    <div onClick={keyPressHandler} className={generateClassName()}>
       <ReactHowler src={[audioFiles[id]]} playing={playing} />
-   </li>
+   </div>
   );
 };
 
