@@ -43,11 +43,12 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
   - UI
 
     - [x] Create a card component
-    - [ ] keyboard for all screens
+    - [x] keyboard for all screens
     - [x] Redo wireframe grid in bootstrap
       - Currently too much padding
-    - [x] Rotate keyboard
-    - [] Name overlay      
+    - [] Rotate keyboard
+    - [] Name Keys overlay      
+    - [x] Add responsive keyboard
 
   - Context:
 
@@ -86,6 +87,11 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
         - Potentially now we will have multiple chord names
         - up to now we dont have a way to derive a chord from a scale
       - _Compromise either reducer complexity or getChord complexity_
+      - [ ] Pass notes to context like this "A4" the **current data structure is too complex**
+        [ ] This is a nice output for info
+         Chord	Name	Alt Name	Notes	Degrees	View
+          F7	7th	Dominant 7th, Major Minor 7th	F, A, C, D♯	1, 3, 5, ♭7	View
+     
       - [x] Test cases
         - ~~major~~
         - ~~minor~~
@@ -99,6 +105,8 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
         - ~~13th (major/minor)~~
         - ~~sixth (major/minor)~~
         - ~~sus2~~
+        - [ ] Over 2 octave test
+
         -[x] Write Amin chord for two octave test
           - [x] Logic for counting up to notes on next octave (+12)
         - [x] sus4
@@ -133,7 +141,9 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
         - [x] In Constants Unlikely a requirement using react wrapper
 
 BUGFIXES:
-
+- [x] Configure esbuild to use new jsx transformation:
+  **Missing Dependancy react plugin**
+  
 - [x] 8 Key press crashes
 - [x] Simplify array handling from constants
 - [x] Fix piano padding layout
@@ -154,9 +164,7 @@ BUGFIXES:
 - 
 
 - Deployment
-  - Build for prod
-  - Github actions may be required
-  - [ ] How will these dependancies be handled when hosted on github pages / website
+  - [x] Build for prod
 
 - Config:
   - [x] Re do config and reinstall
@@ -188,6 +196,7 @@ Component Tree:
 - How to handle inversion ?
 - Env variables ?
 - Classes = dna
+- Utilize tonal.js ?
 
 - ()[https://www.npmjs.com/package/soundfont-player] 
 
@@ -195,6 +204,7 @@ Component Tree:
   - When adding an extra octave will need to add a new note object in context
   - Smells like useEffect and useRef could be levaraged to get around this setState issue
   - `interface HarmonyProps {` ?
+
   --- 
 #### Audio Player Integration   
 A project to better understand audio player integration and its implementation in react
@@ -218,6 +228,7 @@ A project to better understand audio player integration and its implementation i
             - https://github.com/goldfire/howler.js#documentation
             -Web Audio API and falls back to HTML5 Audio
         - tone.js 
+            - Seen examples of this looks viabkle
             - Free
     - [x] Try Soundfont 
         - has adsr 
@@ -228,7 +239,7 @@ A project to better understand audio player integration and its implementation i
     - [x] Oportunites: If this has lots of instruments it could be usefull indeed
     - [] A diagram might help
         - [] Events actions 
-        - []  Context `export default window.AudioContext || window.webkitAudioContext;`
+        - [] Context `export default window.AudioContext || window.webkitAudioContext;`
 
     - Treats:
         - AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page
@@ -241,7 +252,6 @@ How to render the piano keyboard in react.
 utils folder with 
 single functions for export not a class
 add start scripts to vite for npm start
-
 ---
 
 ### V3
@@ -256,5 +266,7 @@ Requirements:
 - [] Handle inversion
 - [] Docs / Diagram
 - [ ] Typescript ?
+
+
 
 ---

@@ -13,25 +13,20 @@ const ChordInfo = () => {
   let inversions = harmony.getChordInversion(notesInputs);
   return (
     <Row>
-      <Container className="mb-2  mt-2 col-lg-6 col-sm-6">
+      <Container className="mb-2 mt-2 col-lg-6 col-sm-6 col-xs-2 m-0">
         <CardCustom title="Chord">
-            {chordData.name ? chordData.name : "No chord found"}{" "}
-            {inversions && inversions.name}
+          {chordData.name ? chordData.name : "No chord found"}{" "}
+          {inversions && inversions.name}
         </CardCustom>
       </Container>
-      <Container className="mb-2 mt-2 col-lg-2 col-sm-3 overflow-hidden">
+      <Container className="mb-2 mt-2 col-lg-2 col-md-3 col-sm-3 col-xs-2 overflow-hidden  m-0">
         <CardCustom title="Notes">
-            {notesInputs ?  notesInputs.join(" ") : "No input"}
+          {notesInputs ? notesInputs.join(" ") : "No input"}
         </CardCustom>
-    </Container>
-      {/* <Container className="mb-4 col-lg-3  col-sm-3">
-        <CardCustom title="Intervals">
-              {chordData.intervals && harmony.getIntervalNames(chordData.intervals).join(" - ")}
-        </CardCustom>
-      </Container> */}
-      <Container className="mb-2 mt-2 col-lg-3   col-sm-3 overflow-hidden">
-          <CardCustom title="Formula">
-              {!chordData.intervals ? "No Formula" : chordData.intervals.join(", ")}
+      </Container>
+      <Container className="mb-2 mt-2 col-lg-4 col-md-3 col-sm-3 col-xs-2 overflow-hidden m-0">
+        <CardCustom title="Formula">
+          {!chordData.intervals ? "No Formula" : chordData.intervals.join(", ")}
         </CardCustom>
       </Container>
     </Row>

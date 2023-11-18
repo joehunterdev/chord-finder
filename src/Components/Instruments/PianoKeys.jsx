@@ -2,15 +2,14 @@ import React from "react";
 import { notes } from "../../Constants/constants";
 import PianoKey from "./PianoKey";
 import styles from "./PianoKeys.module.scss";
-
+import cx from "classnames";
+import CardCustom from "../UI/CardCustom";
+import { Card } from "react-bootstrap";
 const PianoKeys = ({ amount, octave }) => {
   return (
-    // <div className={styles["piano-container"]}>
-
-    // </div>
-    <div className="keyboard">
-      <PianoKeyList octave={octave} />
-      <PianoKeyList octave={5} />
+    <div className={cx(styles.piano)}>
+        <PianoKeyList octave={octave} />
+        <PianoKeyList octave={5} />
     </div>
   );
 };

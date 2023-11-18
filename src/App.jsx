@@ -1,23 +1,28 @@
-
 import Header from "./Components/Layout/Header";
 import Piano from "./Components/Piano";
 import Footer from "./Components/Layout/Footer";
-import { StrictMode } from "react";
 import { NotesProvider } from "./store/notes-context";
-import { Container } from "react-bootstrap";
 import ChordInfo from "./Components/ChordInfo";
+import { Container, Row, Col } from "react-bootstrap";
+
 function App() {
   return (
-    <StrictMode>
+    <>
       <Header></Header>
-      <Container className="col-lg-8 col-md-12 col-sm-12" fluid>
-        <NotesProvider>
-          <ChordInfo></ChordInfo>
-          <Piano></Piano>
-         </NotesProvider>
-        <Footer />
-      </Container>
-    </StrictMode>
+      <NotesProvider>
+        <Container fluid>
+          <Row className="justify-content-center"> {/* Add justify-content-center class */}
+            <Col sm={12} lg={8}>
+              <ChordInfo></ChordInfo>
+            </Col>
+            <Col sm={12} lg={8}>
+              <Piano></Piano>
+            </Col>
+          </Row>
+        </Container>
+      </NotesProvider>
+      <Footer />
+    </>
   );
 }
 

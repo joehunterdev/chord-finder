@@ -21,8 +21,8 @@ const PianoKey = ({ id, name, alt, octave }) => {
     let activeClass = active ? styles.active : "";
 
     return alt
-      ? cx(styles.key,styles.black, activeClass, styles[noteName])
-      : cx(styles.key,styles.white, activeClass, styles[noteName]);
+      ? cx(styles.key,styles.noteName, styles.black, activeClass, styles[noteName])
+      : cx(styles.key,noteName, styles.white, activeClass, styles[noteName]);
   };
 
   useEffect(() => {

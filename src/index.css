@@ -2,7 +2,7 @@
 
 /* Add the following link tag to import normalize */
 /* @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css'); */
- */
+
 * {
   box-sizing: border-box;
 }
@@ -15,6 +15,12 @@ body {
   margin: 0;
   background-color: #3f3f3f;
 }
+
+/* .container{
+   width:auto;
+   height: auto;
+   padding:10px;
+} */
 
 /* 
 ol,ul{
