@@ -1,51 +1,31 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
-
 /* Add the following link tag to import normalize */
-/* @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css'); */
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: 'Noto Sans JP', sans-serif;
+  color: rgb(244, 255, 255);
 }
 
 body {
   margin: 0;
-  background-color: #3f3f3f;
+  font-weight: 300 !important;
+  /* color: #333 !important; */
+  color: #514f4f !important; 
+  font-size: 0.5em;
 }
 
-/* .container{
-   width:auto;
-   height: auto;
-   padding:10px;
-} */
+h5,h1, a:link{
+  font-family: 'Titillium Web', sans-serif !important;
+  font-weight: 600 !important;
+  /* color: #333 !important; */
+  color: #514f4f !important; 
+  font-size: 0.8em;
+}
 
-/* 
-ol,ul{
-  list-style:none;
-  padding-left: 0 ;
-  margin:0;
-} 
-*/
-
-
-/* Styles for screens wider than 480px (horizontal iPhone)
-@media screen and (max-height: 480px) {
-  ul  {
-   padding-top: revert;
-   height: 12.875em;
-   width: 40em;
-   margin: 0em auto;
-   padding-left: 1em; 
-   position: relative;
-   border-radius: 0.5em;
-   box-shadow: 0 0 0px rgba(0, 0, 0, 0.2) inset,
-     0 1px rgba(212, 152, 125, 0.2) inset, 0 5px 15px rgba(0, 0, 0, 0.5);
- } 
- .set {
-   padding-top: -50px;
- }
- 
-} */
+h1{
+  font-weight: 400 !important;
+  font-size: 1.2em !important;
+}

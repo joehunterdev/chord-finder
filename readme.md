@@ -14,4 +14,4 @@ React Chord Finder is a React-based application that allows users to interact wi
 To get started with React Chord Finder, clone the repository to your local machine:
  `npm install` to install the necessary dependencies. Then, run `npm run dev` to start the development server.
 
-![Piano Keys Pressed](chord-finder-example.png)
+![Piano Keys Pressed](public/chord-finder-example.png)

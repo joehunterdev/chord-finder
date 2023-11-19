@@ -27,7 +27,8 @@ $keyBlackWidth: calc($keyWhiteWidth / 2);
   position: relative;
 
   &.black {
-    background-color: black;
+    background-color:#373737; 
+
     height: calc($keysHeight - 10vh);
 	
     //Custom key height for mobile rotated	
