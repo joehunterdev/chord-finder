@@ -1,0 +1,15 @@
+{
+  "short_name": "Chord Finder",
+  "name": "Chord Finder",
+  "icons": [
+    {
+      "src": "android-icon-36x36.png",
+      "type": "image/png",
+      "sizes": "36x36"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
