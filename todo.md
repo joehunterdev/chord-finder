@@ -28,7 +28,7 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
       - [ ] Reset feature
       - [ ] Error Boundries
       - [x] interval name
-      - [ ] Formula using diatonic scale 1 3 5
+
 
   - ChordName Components
 
@@ -88,16 +88,19 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
         - up to now we dont have a way to derive a chord from a scale
       - _Compromise either reducer complexity or getChord complexity_
       - [x] Pass notes to context like this "A4" the **current data structure is too complex**
-        [ ] This is a nice output for info
-         Chord	Name	Alt Name	Notes	Degrees	View
-          F7	7th	Dominant 7th, Major Minor 7th	F, A, C, D♯	1, 3, 5, ♭7	View
-     
-      - [x] Test cases
+        [x] This is a nice output for info `F7	7th	Dominant 7th, Major Minor 7th	F, A, C, D♯	1, 3, 5, ♭7	View`
+          - [x] Formula using diatonic scale 1 3 5
+          - [x] Detect scale
+          - [x] Return notes of scale     
+        - [ ] Test cases
         - ~~major~~
         - ~~minor~~
         - ~~augmented~~
         - ~~diminished~~
         - BUG: 11th 13th chords
+        - [x]: Fix Playback
+        - [ ] Sort Notes 
+        - []
         - 8 types of 7th
           - ([x]7, ~~maj7, m7, m(maj7),~~ [x]dim7, [x] 7b5, [x]7#5, [x]m7b5)
         - ~~ninth (major/minor)~~
@@ -105,7 +108,7 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
         - ~~13th (major/minor)~~
         - ~~sixth (major/minor)~~
         - ~~sus2~~
-        - [ ] Over 2 octave test
+        - [x] Over 2 octave test
 
         -[x] Write Amin chord for two octave test
           - [x] Logic for counting up to notes on next octave (+12)
@@ -118,6 +121,8 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
             -  Output inversion with the lowest degree
         - [] Format these notes
         - [] Rename react chord finder to something different
+   - [ ] when or if you need to check length of input etc do it here in constuctor  params notesInput 
+
   - Reproduce audio:
     - [x] Play sound
       - [x] How to reproduce in browser
@@ -139,8 +144,9 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
         - could be public but may cause performance issues go with src
       - [x] Preload
         - [x] In Constants Unlikely a requirement using react wrapper
+      - [ ]HACK: stop slicing (0,1)
 
-BUGFIXES:
+ALLBUGS:
 - [x] Configure esbuild to use new jsx transformation:
   **Missing Dependancy react plugin**
   

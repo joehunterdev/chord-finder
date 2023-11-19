@@ -137,6 +137,11 @@ const chords = [
   { name: "Maj13", notes: ['C', 'E', 'G', 'B', 'D', 'F', 'A'] },
 ];
 
+const scales = {
+  "major": [2, 2, 1, 2, 2, 2, 1],
+  "minor": [2, 1, 2, 2, 1, 2, 2],
+  // Add more scales as needed
+};
 
-export { notes, intervals, chords };
+export { notes, intervals, chords,scales };
 

@@ -11,9 +11,12 @@ const PianoKey = ({ id, name, alt, octave }) => {
 
   const dispatch = useContext(NotesDispatchContext);
   const state = useContext(NotesContext);
-  const inputLength = state.notesInput.length;
+  const notes = state.notesInput.map((note) => { return note.slice(0, -1)})
 
-  const generateClassName = () => {
+  const inputLength = notes.length;
+
+
+   const generateClassName = () => {
     let noteName = name
       .replace("#", "-sharp")
       .replace("b", "-flat")
@@ -37,7 +40,7 @@ const PianoKey = ({ id, name, alt, octave }) => {
       ? dispatch({ type: "keyDown", octave: octave, id: id, name: name })
       : dispatch({ type: "keyUp", octave: octave, id: id, name: name });
   };
-
+  
   return (
     <div onClick={keyPressHandler} className={generateClassName()}>
       <ReactHowler src={[audioFiles[id]]} playing={playing} />
