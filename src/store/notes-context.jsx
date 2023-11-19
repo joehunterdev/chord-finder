@@ -1,54 +1,39 @@
-import React, { createContext, useReducer, memo } from "react";
-import { notes } from "../Constants/constants";
+import React, { createContext, useReducer } from "react";
+import Harmony from "../Components/Harmony";
 
-const initialState = [
-  { octave: 4, notesInput: [] },
-  { octave: 5, notesInput: [] },
-];
+const initialState = { notesInput: [] };
 
 export const NotesContext = createContext(initialState);
 export const NotesDispatchContext = createContext(null);
 
 const notesReducer = (state, action) => {
+  const harmony = new Harmony();
+  const { notesInput } = state;
 
   switch (action.type) {
- 
     case "keyDown": {
-      //Get object by octave
-      const objToMutate = state.find((obj) => obj.octave === action.octave);
-      if (objToMutate) {
-        const updatedNotesInput = [...objToMutate.notesInput, action.name];
-        //sort by pitch
-        updatedNotesInput.sort((a, b) => {
-          const aIndex = notes.findIndex((note) => note.name === a);
-          const bIndex = notes.findIndex((note) => note.name === b);
-          return aIndex - bIndex;
-        });
-        return state.map((obj) =>
-          obj.octave === action.octave ? { ...obj, notesInput: updatedNotesInput } : obj
-        );
-      }
-      return state; //return new state 
+      return {
+        notesInput: harmony.sortPitch(state.notesInput, action.name + action.octave),
+      };
     }
 
     case "keyUp": {
-      const objToMutate = state.find((obj) => obj.octave === action.octave);
-      if (objToMutate) {
-        const updatedNotesInput = objToMutate.notesInput.filter((t) => t !== action.name);
-        return state.map((obj) =>
-          obj.octave === action.octave ? { ...obj, notesInput: updatedNotesInput } : obj
-        );
-      }
-      return state;
+      const noteToRemove = action.name + action.octave;
+      const filteredNotes = notesInput.filter((note) => note !== noteToRemove);
+
+      return {
+        notesInput: filteredNotes,
+      };
     }
 
     default: {
-      throw Error("Unknown action: " + action.type);
+      throw new Error(`Unknown action: ${action.type}`);
+      // return state;
     }
   }
 };
 
-const NotesProvider = memo(({ children }) => {
+const NotesProvider = ({ children }) => {
   const [noteData, dispatch] = useReducer(notesReducer, initialState);
 
   return (
@@ -58,6 +43,6 @@ const NotesProvider = memo(({ children }) => {
       </NotesDispatchContext.Provider>
     </NotesContext.Provider>
   );
-});
+};
 
 export { NotesProvider };

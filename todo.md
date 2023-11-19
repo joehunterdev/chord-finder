@@ -87,7 +87,7 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
         - Potentially now we will have multiple chord names
         - up to now we dont have a way to derive a chord from a scale
       - _Compromise either reducer complexity or getChord complexity_
-      - [ ] Pass notes to context like this "A4" the **current data structure is too complex**
+      - [x] Pass notes to context like this "A4" the **current data structure is too complex**
         [ ] This is a nice output for info
          Chord	Name	Alt Name	Notes	Degrees	View
           F7	7th	Dominant 7th, Major Minor 7th	F, A, C, D♯	1, 3, 5, ♭7	View
@@ -116,7 +116,7 @@ Pure React chord name output from virtual piano keys. With a focus on ui ux disp
             - invert the input 2 times run getChord
             -  Check if a chord has been found or not
             -  Output inversion with the lowest degree
-        - [ ] Format these notes
+        - [] Format these notes
         - [] Rename react chord finder to something different
   - Reproduce audio:
     - [x] Play sound

@@ -11,7 +11,7 @@ const PianoKey = ({ id, name, alt, octave }) => {
 
   const dispatch = useContext(NotesDispatchContext);
   const state = useContext(NotesContext);
-  const inputLength = state.map((obj) => obj.notesInput).flat().length;
+  const inputLength = state.notesInput.length;
 
   const generateClassName = () => {
     let noteName = name

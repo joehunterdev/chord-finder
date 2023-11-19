@@ -7,26 +7,29 @@ import CardCustom from "./UI/CardCustom";
 const harmony = new Harmony();
 
 const ChordInfo = () => {
+
   const state = useContext(NotesContext);
-  const notesInputs = state.map((obj) => obj.notesInput).flat();
-  let chordData = harmony.getChord(notesInputs);
-  let inversions = harmony.getChordInversion(notesInputs);
+  const notesInput = state.notesInput;
+ 
+  let chordData = harmony.getChord(notesInput);
+  let inversions = harmony.getChordInversion(notesInput);
+  const { name, intervals } = chordData;
+
   return (
     <Row>
-      <Container className="mb-2 mt-2 col-lg-6 col-sm-6 col-xs-2 m-0">
+      <Container className="mb-2 mt-2 col-lg-4 col-md-6 col-sm-5 col-xs-2 m-0">
         <CardCustom title="Chord">
-          {chordData.name ? chordData.name : "No chord found"}{" "}
-          {inversions && inversions.name}
+          {name ? name : "No chord found"} {inversions && inversions.name}
         </CardCustom>
       </Container>
-      <Container className="mb-2 mt-2 col-lg-2 col-md-3 col-sm-3 col-xs-2 overflow-hidden  m-0">
+      <Container className="mb-2 mt-2 col-lg-4 col-md-4 col-sm-4 col-xs-2 overflow-hidden  m-0">
         <CardCustom title="Notes">
-          {notesInputs ? notesInputs.join(" ") : "No input"}
+          {notesInput ? notesInput.join(" ") : "No input"}
         </CardCustom>
       </Container>
       <Container className="mb-2 mt-2 col-lg-4 col-md-3 col-sm-3 col-xs-2 overflow-hidden m-0">
-        <CardCustom title="Formula">
-          {!chordData.intervals ? "No Formula" : chordData.intervals.join(", ")}
+        <CardCustom title="Degree">
+          {!intervals ? "No Degree" : intervals.join(", ")}
         </CardCustom>
       </Container>
     </Row>
